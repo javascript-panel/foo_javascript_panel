@@ -8,12 +8,12 @@ includeJS('lastfm_bio.js');
 includeJS('images.js');
 
 const margin = Scale(12);
+const white = RGB(255, 255, 255);
 
 let panel = new Panel();
 let lastfm = new LastFm();
 let lastfm_bio = new LastFmBio(0, 0, 0, 0);
 let images = new Images();
-let white = RGB(255, 255, 255);
 
 lastfm_bio.paint = function (gr) {
 	const y = images.properties.layout.value == 0 ? margin : this.y - margin;

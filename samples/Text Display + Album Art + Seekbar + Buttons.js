@@ -23,9 +23,9 @@ const tfo = {
 	length : fb.TitleFormat('$if2(%length%,LIVE)'),
 };
 
+const bs = Scale(24);
 let font = CreateFontString('Segoe UI', 12);
 let buttons = new Buttons();
-let bs = Scale(24);
 let bottom_y = 0;
 
 buttons.update = function () {

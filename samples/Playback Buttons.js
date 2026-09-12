@@ -14,7 +14,7 @@ const colours = {
 
 let panel = new Panel();
 let buttons = new Buttons();
-let bs = Scale(24);
+const bs = Scale(24);
 
 buttons.update = function () {
 	const x = ((panel.w - bs * 4) / 2);

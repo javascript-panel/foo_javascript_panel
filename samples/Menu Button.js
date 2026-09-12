@@ -10,7 +10,7 @@ const colours = {
 };
 
 let buttons = new Buttons();
-let bs = Scale(24);
+const bs = Scale(24);
 
 buttons.buttons.menu = new Button(0, 0, bs, bs, { char : chars.menu, colour : colours.buttons }, null, function () { Menu(0, bs); }, 'Menu');
 
