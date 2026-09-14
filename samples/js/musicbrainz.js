@@ -212,6 +212,8 @@ class MusicBrainz {
 		panel.m.AppendMenuItem(MF_STRING, 1201, 'Links');
 		panel.m.CheckMenuRadioItem(1200, 1201, this.properties.mode.value + 1200);
 		panel.m.AppendMenuSeparator();
+		panel.m.AppendMenuItem(EnableMenuIf(IsUUID(this.mb_id)), 1210, 'Refresh');
+		panel.m.AppendMenuSeparator();
 		panel.m.AppendMenuItem(EnableMenuIf(utils.IsFile(this.filename)), 1999, 'Open containing folder');
 		panel.m.AppendMenuSeparator();
 	}
@@ -222,6 +224,9 @@ class MusicBrainz {
 		case 1201:
 			this.properties.mode.value = idx - 1200;
 			this.reset();
+			break;
+		case 1210:
+			this.get();
 			break;
 		case 1999:
 			Explorer(this.filename);
