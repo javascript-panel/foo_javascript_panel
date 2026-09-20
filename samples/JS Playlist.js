@@ -1,7 +1,7 @@
 'use strict';
 
 window.DefineScript('JS Playlist', {
-	author : 'Br3tt aka Falstaff',
+	author : 'Falstaff + marc2003',
 	features : {
 		drag_n_drop : true,
 		grab_focus : true

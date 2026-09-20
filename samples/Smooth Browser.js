@@ -1,7 +1,7 @@
 'use strict';
 
 window.DefineScript('Smooth Browser', {
-	author : 'Br3tt aka Falstaff',
+	author : 'Falstaff + marc2003',
 	features : {
 		grab_focus : true
 	}
