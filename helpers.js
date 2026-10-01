@@ -84,11 +84,15 @@ const Clamp = (value, min, max) => {
 		return value;
 }
 
-// Lunminance and DetermineTextColour are based on code from the foobar2000 SDK.
+// ExtractByte, Lunminance and DetermineTextColour are based on code from the foobar2000 SDK.
+const ExtractByte = (value, which) => {
+	return (value >> (which * 8)) & 0xFF;
+}
+
 const Luminance = colour => {
-	const r = getRed(colour);
-	const g = getGreen(colour)
-	const b = getBlue(colour);
+	const r = ExtractByte(colour, 0);
+	const g = ExtractByte(colour, 1);
+	const b = ExtractByte(colour, 2);
 	return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255.0;
 }
 
