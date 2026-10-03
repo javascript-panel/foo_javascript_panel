@@ -191,33 +191,32 @@ const GetNowPlayingColours = () => {
 }
 
 const PlaylistCanAddItems = playlistIndex => {
-	const mask = plman.GetPlaylistLockFilterMask(playlistIndex);
-	return !IsFlagSet(mask, PlaylistLockFilterMask.filter_add);
+	return PlaylistCanImpl(playlistIndex, PlaylistLockFilterMask.filter_add);
 }
 
 const PlaylistCanRemoveItems = playlistIndex => {
-	const mask = plman.GetPlaylistLockFilterMask(playlistIndex);
-	return !IsFlagSet(mask, PlaylistLockFilterMask.filter_remove);
+	return PlaylistCanImpl(playlistIndex, PlaylistLockFilterMask.filter_remove);
 }
 
 const PlaylistCanReorder = playlistIndex => {
-	const mask = plman.GetPlaylistLockFilterMask(playlistIndex);
-	return !IsFlagSet(mask, PlaylistLockFilterMask.filter_reorder);
+	return PlaylistCanImpl(playlistIndex, PlaylistLockFilterMask.filter_reorder);
 }
 
 const PlaylistCanReplaceItems = playlistIndex => {
-	const mask = plman.GetPlaylistLockFilterMask(playlistIndex);
-	return !IsFlagSet(mask, PlaylistLockFilterMask.filter_replace);
+	return PlaylistCanImpl(playlistIndex, PlaylistLockFilterMask.filter_replace);
 }
 
 const PlaylistCanRename = playlistIndex => {
-	const mask = plman.GetPlaylistLockFilterMask(playlistIndex);
-	return !IsFlagSet(mask, PlaylistLockFilterMask.filter_rename);
+	return PlaylistCanImpl(playlistIndex, PlaylistLockFilterMask.filter_rename);
 }
 
 const PlaylistCanRemove = playlistIndex => {
+	return PlaylistCanImpl(playlistIndex, PlaylistLockFilterMask.filter_remove_playlist);
+}
+
+const PlaylistCanImpl = (playlistIndex, filter) => {
 	const mask = plman.GetPlaylistLockFilterMask(playlistIndex);
-	return !IsFlagSet(mask, PlaylistLockFilterMask.filter_remove_playlist);
+	return !IsFlagSet(mask, filter);
 }
 
 const chars = {
