@@ -1,6 +1,15 @@
 'use strict';
 includeJS('lodash.min.js');
 
+const DrawOverlay = (gr, x, y, w, h, alpha) => gr.FillRectangle(x, y, w, h, RGBA(0, 0, 0, alpha || 230));
+const FileExpired = (file, period) => utils.Now() - utils.GetLastModified(file) > period;
+const FormatNumber = (number, separator) => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+const GetExt = path => path.split('.').pop().toLowerCase();
+const JsonParseFile = file => JsonParse(utils.ReadUTF8(file));
+const Q = value => '"' + value + '"';
+const StripTags = str => str.replace(/<br>/gi, "\n").replace(/<p.*>/gi, "\n").replace(/<(?:.|\s)*?>/g, "");
+const Tagged = value => value != '' && value != '?';
+
 class Button {
 	constructor (x, y, w, h, normal, hover, fn, tiptext) {
 		this.x = x;
@@ -216,26 +225,11 @@ const DrawImage = (gr, img, dst_x, dst_y, dst_w, dst_h, mode, opacity, border) =
 	return [dst_x, dst_y, dst_w, dst_h];
 }
 
-const DrawOverlay = (gr, x, y, w, h, alpha) => {
-	gr.FillRectangle(x, y, w, h, RGBA(0, 0, 0, alpha || 230));
-}
 
 const Explorer = file => {
 	if (utils.IsFile(file)) {
 		utils.Run('explorer', '/select,' + Q(file));
 	}
-}
-
-const FileExpired = (file, period) => {
-	return utils.Now() - utils.GetLastModified(file) > period;
-}
-
-const FormatNumber = (number, separator) => {
-	return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, separator);
-}
-
-const GetExt = path => {
-	return path.split('.').pop().toLowerCase();
 }
 
 const GetFiles = (folder, exts) => {
@@ -291,10 +285,6 @@ const JsonParse = value => {
 	}
 }
 
-const JsonParseFile = file => {
-	return JsonParse(utils.ReadUTF8(file));
-}
-
 const Menu = (x, y, flags = 0) => {
 	let menu = window.CreatePopupMenu();
 	let file = new MainMenuHelper('File', 10000, menu);
@@ -330,10 +320,6 @@ const Menu = (x, y, flags = 0) => {
 	}
 }
 
-const Q = value => {
-	return '"' + value + '"';
-}
-
 const Save = (file, value) => {
 	if (utils.WriteTextFile(file, value))
 		return true;
@@ -347,14 +333,6 @@ const StringToArray = (str, sep) => {
 		return [];
 
 	return str.split(sep).map(item => { return item.trim(); }).filter(item => { return !item.empty(); });
-}
-
-const StripTags = str => {
-	return str.replace(/<br>/gi, "\n").replace(/<p.*>/gi, "\n").replace(/<(?:.|\s)*?>/g, "");
-}
-
-const Tagged = value => {
-	return value != '' && value != '?';
 }
 
 const TT = value => {
