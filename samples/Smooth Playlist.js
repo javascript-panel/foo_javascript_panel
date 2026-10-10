@@ -8,7 +8,7 @@ window.DefineScript('Smooth Playlist', {
 	}
 });
 
-include(fb.ComponentPath + 'helpers.js');
+include('helpers');
 include(Paths.smooth + 'common.js');
 include(Paths.smooth + 'inputbox.js');
 include(Paths.smooth + 'scrollbar.js');

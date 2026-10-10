@@ -1,8 +1,8 @@
 'use strict';
 
 window.DefineScript('Menu Button', { author : 'marc2003' });
-include(fb.ComponentPath + 'helpers.js');
-includeJS('common.js');
+include('helpers');
+include('common');
 
 const colours = {
 	buttons : RGB(255, 255, 255),

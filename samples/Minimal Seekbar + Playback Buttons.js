@@ -1,9 +1,9 @@
 'use strict';
 
 window.DefineScript('Minimal Seekbar + Playback Buttons', { author : 'marc2003' });
-include(fb.ComponentPath + 'helpers.js');
-includeJS('panel.js');
-includeJS('seekbar.js');
+include('helpers');
+include('panel');
+include('seekbar');
 
 let panel = new Panel();
 let seekbar = new Seekbar(0, 0, 0, 0);

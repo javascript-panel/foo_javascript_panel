@@ -1,5 +1,5 @@
 'use strict';
-includeJS('himalaya.js');
+include('himalaya');
 
 class LastFm {
 	static ua = 'javascript_panel_lastfm';

@@ -1,10 +1,10 @@
 'use strict';
 
 window.DefineScript('Last.fm Similar Artists + User Charts', { author : 'marc2003', features : { grab_focus : true }});
-include(fb.ComponentPath + 'helpers.js');
-includeJS('panel.js');
-includeJS('lastfm_info.js');
-includeJS('lastfm.js');
+include('helpers');
+include('panel');
+include('lastfm_info');
+include('lastfm');
 
 let panel = new Panel();
 let lastfm = new LastFm();

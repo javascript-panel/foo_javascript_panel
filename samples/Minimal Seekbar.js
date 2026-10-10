@@ -1,9 +1,9 @@
 'use strict';
 
 window.DefineScript('Minimal Seekbar', { author : 'marc2003' });
-include(fb.ComponentPath + 'helpers.js');
-includeJS('common.js');
-includeJS('seekbar.js');
+include('helpers');
+include('common');
+include('seekbar');
 
 let seekbar = new Seekbar(0, 0, 0, 0);
 let font = CreateFontString("Segoe UI", 12);

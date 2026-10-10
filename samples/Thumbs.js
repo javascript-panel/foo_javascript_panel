@@ -1,10 +1,10 @@
 'use strict';
 
 window.DefineScript('Thumbs', { author : 'marc2003', features : { grab_focus : true }});
-include(fb.ComponentPath + 'helpers.js');
-includeJS('panel.js');
-includeJS('lastfm.js');
-includeJS('thumbs.js');
+include('helpers');
+include('panel');
+include('lastfm');
+include('thumbs');
 
 let panel = new Panel();
 let lastfm = new LastFm();

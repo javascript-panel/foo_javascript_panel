@@ -1,11 +1,11 @@
 'use strict';
 
 window.DefineScript('Last.fm Bio + Images', { author : 'marc2003', features : { grab_focus : true }});
-include(fb.ComponentPath + 'helpers.js');
-includeJS('panel.js');
-includeJS('lastfm.js');
-includeJS('lastfm_bio.js');
-includeJS('images.js');
+include('helpers');
+include('panel');
+include('lastfm');
+include('lastfm_bio');
+include('images');
 
 const margin = Scale(12);
 const white = RGB(255, 255, 255);

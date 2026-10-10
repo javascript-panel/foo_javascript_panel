@@ -1,9 +1,9 @@
 'use strict';
 
 window.DefineScript('Album Art', { author : 'marc2003', features : { grab_focus : true }});
-include(fb.ComponentPath + 'helpers.js');
-includeJS('panel.js');
-includeJS('albumart.js');
+include('helpers');
+include('panel');
+include('albumart');
 
 let panel = new Panel({ custom_background : true });
 let albumart = new AlbumArt(0, 0, 0, 0);

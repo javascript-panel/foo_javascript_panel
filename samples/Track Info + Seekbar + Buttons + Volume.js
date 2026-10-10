@@ -1,10 +1,10 @@
 'use strict';
 
 window.DefineScript('Track Info + Seekbar + Buttons + Volume', { author : 'marc2003' });
-include(fb.ComponentPath + 'helpers.js');
-includeJS('panel.js');
-includeJS('seekbar.js');
-includeJS('volume.js');
+include('helpers');
+include('panel');
+include('seekbar');
+include('volume');
 
 // $rgb is supported here
 const tfo = {

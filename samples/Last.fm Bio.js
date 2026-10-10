@@ -1,10 +1,10 @@
 'use strict';
 
 window.DefineScript('Last.fm Bio', { author : 'marc2003', features : { grab_focus : true }});
-include(fb.ComponentPath + 'helpers.js');
-includeJS('panel.js');
-includeJS('lastfm.js');
-includeJS('lastfm_bio.js');
+include('helpers');
+include('panel');
+include('lastfm');
+include('lastfm_bio');
 
 let panel = new Panel();
 let lastfm = new LastFm();

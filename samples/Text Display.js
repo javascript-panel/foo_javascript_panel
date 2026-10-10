@@ -1,10 +1,10 @@
 'use strict';
 
 window.DefineScript('Text Display', { author : 'marc2003', features : { grab_focus : true }});
-include(fb.ComponentPath + 'helpers.js');
-includeJS('panel.js');
-includeJS('albumart.js');
-includeJS('text_display.js');
+include('helpers');
+include('panel');
+include('albumart');
+include('text_display');
 
 let panel = new Panel({ custom_background : true });
 let text = new TextDisplay(LM, 0, 0, 0);

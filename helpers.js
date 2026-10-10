@@ -29,7 +29,6 @@ class Paths {
 	static component_path = fb.ComponentPath;
 	static samples = this.component_path + 'samples\\';
 
-	static js = this.samples + 'js\\'
 	static jsplaylist = this.samples + 'jsplaylist\\';
 	static smooth = this.samples + 'smooth\\';
 	static text = this.samples + 'text\\';
@@ -43,7 +42,6 @@ class Paths {
 
 Object.freeze(Paths);
 
-const includeJS = filename => include(Paths.js + filename);
 const Scale = size => Math.round(size * DPI / 72);
 const IsFlagSet = (value, flags) => (value & flags) != 0;
 const EnableMenuIf = condition => condition ? MF_STRING : MF_GRAYED;

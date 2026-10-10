@@ -1,8 +1,8 @@
 'use strict';
 
 window.DefineScript('Playback Buttons + PBO', { author : 'marc2003' });
-include(fb.ComponentPath + 'helpers.js');
-includeJS('panel.js');
+include('helpers');
+include('panel');
 
 const colours = {
 	buttons : RGB(255, 255, 255),

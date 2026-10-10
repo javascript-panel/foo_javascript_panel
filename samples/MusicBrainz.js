@@ -1,9 +1,9 @@
 'use strict';
 
 window.DefineScript('MusicBrainz', { author : 'marc2003', features : { grab_focus : true }});
-include(fb.ComponentPath + 'helpers.js');
-includeJS('panel.js');
-includeJS('musicbrainz.js');
+include('helpers');
+include('panel');
+include('musicbrainz');
 
 let panel = new Panel();
 let musicbrainz = new MusicBrainz(LM, TM, 0, 0);

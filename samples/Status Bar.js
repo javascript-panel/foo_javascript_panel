@@ -1,7 +1,7 @@
 'use strict';
 
 window.DefineScript('Status Bar', { author : 'marc2003' });
-include(fb.ComponentPath + 'helpers.js');
+include('helpers');
 
 let ww = 0;
 let wh = 0;

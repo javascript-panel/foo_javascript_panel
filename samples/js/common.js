@@ -1,5 +1,5 @@
 'use strict';
-includeJS('lodash.min.js');
+include('lodash.min');
 
 const DrawOverlay = (gr, x, y, w, h, alpha) => gr.FillRectangle(x, y, w, h, RGBA(0, 0, 0, alpha || 230));
 const FileExpired = (file, period) => utils.Now() - utils.GetLastModified(file) > period;

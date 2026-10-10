@@ -1,9 +1,9 @@
 'use strict';
 
 window.DefineScript('Console', { author : 'marc2003', features : { grab_focus : true }});
-include(fb.ComponentPath + 'helpers.js');
-includeJS('panel.js');
-includeJS('console.js');
+include('helpers');
+include('panel');
+include('console');
 
 let panel = new Panel();
 let con = new Console(LM, TM, 0, 0);
