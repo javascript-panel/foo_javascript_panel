@@ -1,4 +1,5 @@
 'use strict';
+include('lastfm');
 
 class LastFmInfo {
 	constructor (x, y, w, h) {

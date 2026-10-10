@@ -3,7 +3,6 @@
 window.DefineScript('Images', { author : 'marc2003', features : { grab_focus : true }});
 include('helpers');
 include('panel');
-include('lastfm');
 include('images');
 
 let panel = new Panel();

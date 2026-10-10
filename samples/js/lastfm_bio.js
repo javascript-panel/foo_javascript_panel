@@ -1,4 +1,5 @@
 'use strict';
+include('lastfm');
 
 class LastFmBio {
 	constructor (x, y, w, h) {

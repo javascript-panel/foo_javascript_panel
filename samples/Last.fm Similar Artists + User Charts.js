@@ -4,7 +4,6 @@ window.DefineScript('Last.fm Similar Artists + User Charts', { author : 'marc200
 include('helpers');
 include('panel');
 include('lastfm_info');
-include('lastfm');
 
 let panel = new Panel();
 let lastfm = new LastFm();

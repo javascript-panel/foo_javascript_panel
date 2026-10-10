@@ -3,7 +3,6 @@
 window.DefineScript('Last.fm Bio + Images', { author : 'marc2003', features : { grab_focus : true }});
 include('helpers');
 include('panel');
-include('lastfm');
 include('lastfm_bio');
 include('images');
 
