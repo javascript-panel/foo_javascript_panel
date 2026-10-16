@@ -142,7 +142,7 @@ class TextReader {
 			this.filename = temp_filename;
 
 			if (utils.IsFolder(this.filename)) {
-				this.filename = _.first(GetFiles(this.filename, this.exts))
+				this.filename = _.first(GetFiles(this.filename, this.exts)) || '';
 			}
 
 			const str = utils.ReadUTF8(this.filename).replace(/\t/g, '    ');
