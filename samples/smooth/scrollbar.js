@@ -1,3 +1,5 @@
+'use strict';
+
 function oScrollbar() {
 	this.buttons = new Array(3);
 	this.buttonClick = false;

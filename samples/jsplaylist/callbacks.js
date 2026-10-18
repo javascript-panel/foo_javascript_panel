@@ -1,3 +1,5 @@
+'use strict';
+
 function on_char(code) {
 	if (cSettings.visible) {
 		for (var i = 0; i < p.settings.pages.length; i++) {

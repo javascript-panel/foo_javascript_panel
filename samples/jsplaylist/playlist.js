@@ -1,3 +1,5 @@
+'use strict';
+
 function oGroup(index, start, metadb, group_key) {
 	this.index = index;
 	this.start = start;
@@ -513,7 +515,7 @@ function oList(object_name) {
 	this.init_groups = function () {
 		this.groups = [];
 		this.totalRows = 0;
-		g_total_duration_text = utils.FormatDuration(this.handleList.CalcTotalDuration());
+
 		if (this.count == 0)
 			return;
 
@@ -533,20 +535,20 @@ function oList(object_name) {
 
 			if (current != previous) {
 				if (g > 0) {
-					this.groups[g - 1].finalise(t, group_length);
+					this.groups[g - 1].finalise(t, group_duration);
 				}
 				this.groups.push(new oGroup(g, i, metadb, current));
 				t = 1;
 				g++;
-				group_length = length;
+				group_duration = length;
 				previous = current;
 			} else {
 				t++;
-				group_length += length;
+				group_duration += length;
 			}
 		}
 
-		this.groups[g - 1].finalise(t, group_length);
+		this.groups[g - 1].finalise(t, group_duration);
 		this.totalRows = this.getTotalRows();
 	}
 
@@ -667,10 +669,10 @@ function oList(object_name) {
 		var mediane = 0;
 		var deb = 0;
 		var fin = this.groups.length - 1;
+		var grp_height = cGroup.expandedHeight;
 		while (deb <= fin) {
 			mediane = Math.floor((fin + deb) / 2);
-			grp_height = cGroup.expandedHeight;
-			grp_size = grp_height + this.groups[mediane].count;
+			var grp_size = grp_height + this.groups[mediane].count;
 			if (valeur >= this.groups[mediane].totalPreviousRows && valeur < this.groups[mediane].totalPreviousRows + grp_size) {
 				return mediane;
 			} else if (valeur < this.groups[mediane].totalPreviousRows) {

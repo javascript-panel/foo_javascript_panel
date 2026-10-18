@@ -1,3 +1,5 @@
+'use strict';
+
 function oPlaylist(idx, parent) {
 	this.idx = idx;
 	this.name = plman.GetPlaylistName(idx);

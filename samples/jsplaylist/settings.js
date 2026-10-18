@@ -1,3 +1,5 @@
+'use strict';
+
 function settings_checkboxes_action(id, status, parentId) {
 	switch (parentId) {
 	case 0: // page 0 : General
@@ -1320,6 +1322,7 @@ function oSettings() {
 
 		var rect_w = "Delete Pattern".calc_width(g_font_12_bold) + 30;
 		var rect_h = scale(32);
+		var gb;
 
 		// Add a Custom Column
 		var newColumn_off = utils.CreateImage(rect_w, rect_h);
@@ -1381,7 +1384,7 @@ function oSettings() {
 
 		this.delbuttonPattern = new button(delPattern_off, delPattern_ov, delPattern_ov);
 
-		button_zoomSize = scale(25);
+		var button_zoomSize = scale(25);
 
 		var close_off = utils.CreateImage(75, 75);
 		gb = close_off.GetGraphics();

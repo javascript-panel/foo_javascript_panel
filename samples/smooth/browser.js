@@ -1,3 +1,5 @@
+'use strict';
+
 function on_char(code) {
 	if (ppt.library && ppt.showHeaderBar && brw.inputbox.edit) {
 		brw.inputbox.on_char(code);

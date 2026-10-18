@@ -1,3 +1,5 @@
+'use strict';
+
 function PlaylistScrollBar() {
 	this.buttons = new Array(3);
 

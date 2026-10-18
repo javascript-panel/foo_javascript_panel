@@ -1,3 +1,5 @@
+'use strict';
+
 function DrawCover(gr, img, dst_x, dst_y, dst_w, dst_h) {
 	if (img) {
 		var s = Math.min(dst_w / img.Width, dst_h / img.Height);
@@ -275,7 +277,6 @@ function init() {
 }
 
 function update_playlist() {
-	g_group_id_focused = 0;
 	p.list.updateHandleList();
 
 	p.list.setItems(false);
@@ -439,6 +440,12 @@ var g_font_fluent_40 = JSON.stringify({Name:"Segoe Fluent Icons", Size:40}); // 
 var g_font_group1;
 var g_font_group2;
 var g_font_size;
+
+var g_z2;
+var g_z4;
+var g_z5;
+var g_z10;
+var g_z16;
 
 var g_queue_width = 0;
 var g_dynamic = false;

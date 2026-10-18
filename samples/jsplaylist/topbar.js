@@ -1,3 +1,5 @@
+'use strict';
+
 function oTopBar() {
 	this.setSize = function (x, y, w, h) {
 		this.x = x;

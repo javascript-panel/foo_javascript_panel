@@ -1,3 +1,5 @@
+'use strict';
+
 function on_colours_changed() {
 	get_colours();
 
@@ -419,6 +421,7 @@ var g_font_group2;
 var g_font_group3;
 var g_font_fluent_12;
 var g_font_fluent_20;
+var g_font_height;
 var g_fsize = 16;
 
 var g_colour_text = 0;

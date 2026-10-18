@@ -1,3 +1,5 @@
+'use strict';
+
 function on_char(code) {
 	if (ppt.showHeaderBar && brw.inputbox.edit) {
 		brw.inputbox.on_char(code);
@@ -510,7 +512,7 @@ function oBrowser() {
 		if (fid > -1) {
 			if (ppt.showGroupHeaders) {
 				g_focus_album_id = this.getAlbumIdfromTrackId(fid);
-				for (i = 0; i < this.rows.length; i++) {
+				for (var i = 0; i < this.rows.length; i++) {
 					if (this.rows[i].type != 0 && this.rows[i].albumId == g_focus_album_id) {
 						var albumTrackId = g_focus_id - this.groups[g_focus_album_id].start;
 						row_idx = i + ppt.groupHeaderRowsNumber + albumTrackId;
@@ -519,7 +521,7 @@ function oBrowser() {
 				}
 			} else {
 				g_focus_album_id = this.getAlbumIdfromTrackId(fid);
-				for (i = 0; i < this.rows.length; i++) {
+				for (var i = 0; i < this.rows.length; i++) {
 					if (this.rows[i].type == 0 && this.rows[i].albumId == g_focus_album_id) {
 						var albumTrackId = g_focus_id - this.groups[g_focus_album_id].start;
 						row_idx = i + albumTrackId;

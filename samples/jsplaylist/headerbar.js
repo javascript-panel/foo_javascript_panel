@@ -1,3 +1,5 @@
+'use strict';
+
 function oBorder() {
 	this.leftId = arguments[0];
 	this.rightId = arguments[1];

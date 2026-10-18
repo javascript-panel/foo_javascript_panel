@@ -1,3 +1,5 @@
+'use strict';
+
 var cInputbox = {
 	cursor_interval: false,
 	cursor_state: true,

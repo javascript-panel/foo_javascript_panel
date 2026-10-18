@@ -1,3 +1,5 @@
+'use strict';
+
 function oInputbox(w, h, live_update, default_text, empty_text, func) {
 	this.w = w;
 	this.h = h;

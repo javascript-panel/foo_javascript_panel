@@ -1,3 +1,5 @@
+'use strict';
+
 function on_char(code) {
 	if (brw.inputboxID >= 0) {
 		brw.inputbox.on_char(code);
