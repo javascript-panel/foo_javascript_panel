@@ -84,9 +84,7 @@ class LastFm {
 
 		if (api_key != this.api_key) {
 			this.api_key = api_key;
-			this.write_file();
-			window.NotifyOthers('2K3.NOTIFY.LASTFM', 'update');
-			this.notify_data('2K3.NOTIFY.LASTFM', 'update');
+			this.update();
 		}
 	}
 
@@ -95,10 +93,14 @@ class LastFm {
 
 		if (username != this.username) {
 			this.username = username;
-			this.write_file();
-			window.NotifyOthers('2K3.NOTIFY.LASTFM', 'update');
-			this.notify_data('2K3.NOTIFY.LASTFM', 'update');
+			this.update();
 		}
+	}
+
+	update () {
+		this.write_file();
+		window.NotifyOthers('2K3.NOTIFY.LASTFM', 'update');
+		this.notify_data('2K3.NOTIFY.LASTFM', 'update');
 	}
 
 	write_file () {
