@@ -45,7 +45,7 @@ Object.freeze(Paths);
 const Scale = size => Math.round(size * DPI / 72);
 const IsFlagSet = (value, flags) => (value & flags) != 0;
 const EnableMenuIf = condition => condition ? MF_STRING : MF_GRAYED;
-const Point2Pixel = (pt, dpi) =>  pt * dpi / 72;
+const Point2Pixel = (pt, dpi) => pt * dpi / 72;
 const pos2vol = pos => Math.max(-100, 10 * Math.log(pos) / Math.LN2);
 const vol2pos = volume => Math.pow(2, volume / 10);
 const RGB = (r, g, b) => (0xff000000 | (r << 16) | (g << 8) | (b));
@@ -254,10 +254,6 @@ const chars = {
 	autoplaylist : '\uea69',
 	moon : '\ue708',
 	brightness : '\ue706',
-// Ignore these, they are special chars for $rgb and $font parsing
-	etx : String.fromCharCode(3),
-	bel : String.fromCharCode(7),
-	tab : '\t',
 };
 
 const DWRITE_FONT_WEIGHT_THIN = 100;
