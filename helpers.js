@@ -152,8 +152,14 @@ const GetNowPlayingColours = () => {
 	if (!img)
 		return [];
 
-	const extracted_colours = JSON.parse(img.GetColourScheme());
-	const background_colour = extracted_colours[0].Colour;
+	const extracted_colours = img.GetColourScheme(10).map(item => {
+		return {
+			colour: item,
+			luminance: Luminance(item),
+		};
+	});
+
+	const background_colour = extracted_colours[0].colour;
 	const text_colour = DetermineTextColour(background_colour);
 	let selected_background_colour;
 	let selected_text_colour;
@@ -164,20 +170,20 @@ const GetNowPlayingColours = () => {
 		selected_background_colour = text_colour;
 		selected_text_colour = background_colour;
 	} else {
-		const l = extracted_colours[0].Luminance;
+		const l = extracted_colours[0].luminance;
 		extracted_colours.pop();
 
 		let diff = 0;
 		let idx = 0;
 		extracted_colours.forEach((item, i) => {
-			const tmp = Math.abs(l - item.Luminance);
+			const tmp = Math.abs(l - item.luminance);
 			if (tmp > diff) {
 				diff = tmp;
 				idx = i;
 			}
 		});
 
-		selected_background_colour = extracted_colours[idx].Colour;
+		selected_background_colour = extracted_colours[idx].colour;
 		selected_text_colour = DetermineTextColour(selected_background_colour);
 	}
 
