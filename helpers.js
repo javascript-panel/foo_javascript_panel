@@ -152,7 +152,7 @@ const GetNowPlayingColours = () => {
 	if (!img)
 		return [];
 
-	const extracted_colours = img.GetColourScheme(10).map(item => {
+	const extracted_colours = img.GetColourScheme().map(item => {
 		return {
 			colour: item,
 			luminance: Luminance(item),
