@@ -1,0 +1,75 @@
+'use strict';
+
+include('helpers');
+
+const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+const font_string = CreateFontString('Segoe UI', 20);
+const layout = utils.CreateTextLayout(text, font_string);
+let offset = 0;
+let text_height = 0;
+
+// split text in to whole words for colouring
+const words = text.split(' ');
+let colour_string = '';
+
+refresh();
+
+function refresh() {
+	const colours = [];
+	let start = 0;
+
+	words.forEach((word, i) => {
+		// length of word plus following space
+		const len = word.length + 1;
+
+		colours.push({
+			// when using an array, Start and Length are mandatory
+			Start : start,
+			Length : len,
+			Colour : RGB(Math.random() * 200, Math.random() * 200, Math.random() * 200),
+		});
+
+		// increment start position for next word
+		start += len;
+	});
+
+	colour_string = JSON.stringify(colours);
+}
+
+const box = {
+	x : 50,
+	y : 50,
+	w : 0,
+	h : 0,
+}
+
+function on_paint(gr) {
+	gr.Clear(RGB(255, 255, 255));
+	gr.DrawRectangle(box.x, box.y, box.w, box.h, 1, RGB(255, 0, 0));
+	gr.WriteTextLayout(layout, colour_string, box.x, box.y, box.w, box.h, offset);
+}
+
+function on_mouse_wheel(step) {
+	if (text_height < box.h)
+		return;
+
+	offset += step * 60;
+
+	if (offset > 0)
+		offset = 0;
+	else if (offset < box.h - text_height)
+		offset = box.h - text_height;
+
+	window.Repaint();
+}
+
+function on_size() {
+	box.w = window.Width / 2;
+	box.h = window.Height / 2;
+	text_height = layout.CalcTextHeight(box.w);
+
+	if (text_height < box.h)
+		offset = 0;
+	else if (offset < box.h - text_height)
+		offset = box.h - text_height;
+}

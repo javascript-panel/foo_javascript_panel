@@ -1,0 +1,11 @@
+const p = -1;
+console.log(plman.GetPlaylistFocusItemIndex(p) === -1);
+console.log(plman.GetPlaylistItemCount(p) === 0);
+console.log(plman.GetPlaylistItems(p).Count === 0);
+console.log(plman.GetPlaylistLockFilterMask(p) === -1);
+console.log(plman.GetPlaylistLockName(p) === "");
+console.log(plman.GetPlaylistName(p) === "");
+console.log(plman.GetPlaylistSelectedItems(p).Count === 0);
+console.log(plman.IsAutoPlaylist(p) === false);
+console.log(plman.IsPlaylistItemSelected(p, p) === false);
+console.log(plman.IsPlaylistLocked(p) === false);

@@ -1,0 +1,51 @@
+'use strict';
+
+include('helpers');
+
+// Tracks playlist selection
+
+let img = null;
+let colours = [];
+on_item_focus_change();
+
+function on_item_focus_change() {
+	if (img) {
+		img = null;
+	}
+
+	colours = [];
+	const metadb = fb.GetFocusItem();
+
+	if (metadb) {
+		img = metadb.GetAlbumArt(); // omitting the type defaults to front
+
+		if (img) {
+			colours = img.GetColourScheme();
+		}
+	}
+
+	window.Repaint();
+}
+
+function on_paint(gr) {
+	if (img && colours.length) {
+		gr.DrawImage(img, 0, 0, 300, 300, 0, 0, img.Width, img.Height);
+
+		colours.forEach((colour, i) => {
+			gr.FillRectangle(300, i * 30, window.Width - 300, 30, colour);
+
+			/*
+			The 2nd WriteTextSimple arg is the font. Leaving it as an empty string so defaults of Segoe UI and 16px are used.
+
+			See helpers.js in the component directory for the DetermineTextColour function
+			which calculates whether to use black or white for the text colour depending on
+			the background colour.
+			*/
+			gr.WriteTextSimple('Some text', '', DetermineTextColour(colour), 300, i * 30, window.Width - 300, 30, 2, 2);
+		});
+	}
+}
+
+function on_playlist_switch() {
+	on_item_focus_change();
+}

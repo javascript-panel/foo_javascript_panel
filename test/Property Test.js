@@ -1,0 +1,35 @@
+const a = 1;
+const b = -1;
+const c = 1234.5678;
+const d = -1234.5678;
+const e = 0;
+const f = Math.pow(2, 31);
+const g = -Math.pow(2, 31);
+const h = true;
+const i = false;
+const j = '20';
+const k = '機能・設定解説';
+
+const aa = window.GetProperty('a', a);
+const bb = window.GetProperty('b', b);
+const cc = window.GetProperty('c', c);
+const dd = window.GetProperty('d', d);
+const ee = window.GetProperty('e', e);
+const ff = window.GetProperty('f', f);
+const gg = window.GetProperty('g', g);
+const hh = window.GetProperty('h', h);
+const ii = window.GetProperty('i', i);
+const jj = window.GetProperty('j', j);
+const kk = window.GetProperty('k', k);
+
+console.log(a === aa);
+console.log(b === bb);
+console.log(c === cc);
+console.log(d === dd);
+console.log(e === ee);
+console.log(f === ff);
+console.log(g === gg);
+console.log(h === hh);
+console.log(i === ii);
+console.log(j === jj);
+console.log(k === kk);

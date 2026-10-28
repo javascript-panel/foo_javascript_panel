@@ -1,0 +1,7 @@
+'use strict';
+
+fb.RunMainMenuCommand('Playback/Device/Primary sound driver');
+
+function on_mouse_lbtn_dblclk() {
+	fb.RunMainMenuCommand('Playback/Device/Null Output');
+}
