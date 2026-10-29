@@ -56,9 +56,9 @@ class LastFmBio {
 	draw_header (gr, colour, x, y, w, h, draw_line) {
 		let flag_width = 0;
 
-		if (this.flag.length && panel.fonts.twemoji) {
-			flag_width = utils.CalcTextWidth(this.flag + ' ', panel.fonts.twemoji);
-			gr.WriteTextSimple(this.flag, panel.fonts.twemoji, colour, x, y, flag_width, h, DWRITE_TEXT_ALIGNMENT_LEADING, DWRITE_PARAGRAPH_ALIGNMENT_CENTER, DWRITE_WORD_WRAPPING_NO_WRAP, DWRITE_TRIMMING_GRANULARITY_CHARACTER);
+		if (this.flag.length && panel.fonts.noto) {
+			flag_width = utils.CalcTextWidth(this.flag, panel.fonts.noto) + Scale(4);
+			gr.WriteTextSimple(this.flag, panel.fonts.noto, colour, x, y, flag_width, h, DWRITE_TEXT_ALIGNMENT_LEADING, DWRITE_PARAGRAPH_ALIGNMENT_CENTER, DWRITE_WORD_WRAPPING_NO_WRAP, DWRITE_TRIMMING_GRANULARITY_CHARACTER);
 		}
 
 		gr.WriteTextSimple(this.artist, panel.fonts.title, colour, x + flag_width, y, w - flag_width, h, DWRITE_TEXT_ALIGNMENT_LEADING, DWRITE_PARAGRAPH_ALIGNMENT_CENTER, DWRITE_WORD_WRAPPING_NO_WRAP, DWRITE_TRIMMING_GRANULARITY_CHARACTER);

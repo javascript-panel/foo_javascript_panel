@@ -13,7 +13,6 @@ class Panel {
 		this.h = 0;
 		this.metadb = fb.GetFocusItem();
 		this.metadb_func = typeof on_metadb_changed == 'function';
-		this.twemoji_font = false;
 		this.row_height = 0;
 		this.scroll_step = 0;
 		this.selection;
@@ -88,10 +87,11 @@ class Panel {
 		this.fonts.normal = this.create_font(this.fonts.size.value);
 		this.fonts.title = this.create_font(this.fonts.size.value, 700);
 		this.fonts.monospace = CreateFontString('Consolas', this.fonts.size.value);
-		this.twemoji_font = utils.CheckFont('Twemoji Mozilla');
 
-		if (this.twemoji_font) {
-			this.fonts.twemoji = CreateFontString('Twemoji Mozilla', this.fonts.size.value);
+		if (utils.CheckFont('Noto Color Emoji')) {
+			this.fonts.noto = CreateFontString('Noto Color Emoji', this.fonts.size.value);
+		} else {
+			this.fonts.noto = null;
 		}
 
 		this.row_height = Scale(this.fonts.size.value + 4);
