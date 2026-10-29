@@ -30,18 +30,14 @@ list.paint = function (gr) {
 
 list.update = function () {
 	this.data = [];
-	let str = '';
 
 	_.forEach(json, (item, i) => {
 		this.data.push({
 			flag : item.flag,
 			name : item.name
 		});
-		
-		str += item.flag + ' ' + item.name + '\r\n';
 	});
 
-	//utils.ShowPopupMessage(str)
 	this.count = this.data.length;
 }
 
