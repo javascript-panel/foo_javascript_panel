@@ -21,7 +21,7 @@ class TextDisplay {
 			text_tf : new Property('2K3.DISPLAY.TF', ''),
 			text_align : new Property('2K3.DISPLAY.TEXT_ALIGN', 2),
 			paragraph_align : new Property('2K3.DISPLAY.PARAGRAPH_ALIGN', 2),
-			per_second : new Property('2K3.DISPLAY.PER.SECOND', false),
+			per_second : new Property('2K3.DISPLAY.PER.SECOND', true),
 			albumart : new Property('2K3.DISPLAY.ALBUMART', true),
 			albumart_blur : new Property('2K3.DISPLAY.ALBUMART.BLUR', true),
 			layout : new Property('2K3.DISPLAY.LAYOUT', 0), // 0 text only, 1 album art top text bottom 2 album art left text right

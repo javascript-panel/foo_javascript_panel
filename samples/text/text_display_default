@@ -1,9 +1,10 @@
 $font(Segoe UI,24,700)
 [%title%$crlf()]
-$if(%country%,$font(Twemoji Mozilla,18)$country_flag(%country%) ,)
+$if(%country%,$font(Noto Color Emoji,18)$country_flag($meta(country,0))$font() ,)
 $font(Segoe UI,18)
 [%artist%$crlf()]
 $font(Segoe UI,14)
 [%album% '('%date%')'$crlf()]
 $font(Segoe UI,10)
+$if(%isplaying%,%playback_time% / $if2(%length%,LIVE) :: )
 [%__bitrate% kbps %codec% [%codec_profile% ][%__tool% ][%__tagtype%]]
