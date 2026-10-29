@@ -19,7 +19,7 @@ function refresh() {
 	const colours = [];
 	let start = 0;
 
-	words.forEach(function(word, i) {
+	words.forEach((word, i) => {
 		// length of word plus following space
 		const len = word.length + 1;
 
