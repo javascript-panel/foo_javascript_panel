@@ -132,8 +132,8 @@ function on_paint(gr) {
 
 	if (playback.IsPlaying) {
 		const time_width = seekbar.x - Scale(12);
-		gr.WriteText(tfo.playback_time.Eval(), font, colours.white, 0, bottom_y, time_width, Scale(12), 1, 2);
-		gr.WriteText(tfo.length.Eval(), font, colours.white, seekbar.x + seekbar.w + Scale(12), bottom_y, time_width, Scale(12), 0, 2);
+		gr.WriteText(playback.FormatTitle(tfo.playback_time), font, colours.white, 0, bottom_y, time_width, Scale(12), 1, 2);
+		gr.WriteText(playback.FormatTitle(tfo.length), font, colours.white, seekbar.x + seekbar.w + Scale(12), bottom_y, time_width, Scale(12), 0, 2);
 
 		if (playback.Length > 0) {
 			gr.FillEllipse(seekbar.x + seekbar.pos(), seekbar.y + Scale(3), Scale(6), Scale(6), colours.white);

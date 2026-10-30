@@ -71,7 +71,7 @@ function draw_left_text(gr) {
 	if (starting)
 		left_text = 'Starting playback...';
 	else if (playback.IsPlaying)
-		left_text = tfo.Eval();
+		left_text = playback.FormatTitle(tfo);
 	else
 		left_text = fb.VersionString;
 

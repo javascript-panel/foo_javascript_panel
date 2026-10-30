@@ -317,7 +317,7 @@ function on_paint(gr) {
 }
 
 function on_playback_new_track() {
-	g_time = tfo.time.Eval();
+	g_time = playback.FormatTitle(tfo.time);
 	setWallpaperImg();
 
 	if (ppt.enableDynamicColours) {
@@ -349,7 +349,7 @@ function on_playback_stop(reason) {
 
 function on_playback_time() {
 	g_seconds++;
-	g_time = tfo.time.Eval();
+	g_time = playback.FormatTitle(tfo.time);
 
 	if (brw.nowplaying_y + ppt.rowHeight > brw.y && brw.nowplaying_y < brw.y + brw.h) {
 		brw.repaint();
@@ -549,7 +549,7 @@ function oBrowser() {
 		if (this.list.Count == 0)
 			return;
 
-		var arr = tfo.groupkey.EvalWithMetadbs(this.list);
+		var arr = this.list.FormatTitles(tfo.groupkey);
 		var previous = "";
 		var g = 0, t = 0;
 
@@ -579,7 +579,7 @@ function oBrowser() {
 	this.populate = function () {
 		this.list.RemoveAll();
 		this.list = plman.GetPlaylistItems(g_active_playlist);
-		this.track_tf_arr = tfo.track.EvalWithMetadbs(this.list);
+		this.track_tf_arr = this.list.FormatTitles(tfo.track);
 
 		this.init_groups();
 		this.setList();
@@ -707,7 +707,7 @@ function oBrowser() {
 					}
 
 					if (is_playing) {
-						var arr = tfo.artist_title.Eval().split(" ^^ ");
+						var arr = playback.FormatTitle(tfo.artist_title).split(" ^^ ");
 						artist = arr[0];
 						title = arr[1];
 						right_text = g_time;

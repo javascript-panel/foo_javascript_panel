@@ -70,9 +70,9 @@ class Panel {
 		let tfo = this.get_tfo(t);
 
 		if (this.prefer_playing())
-			return tfo.Eval();
-
-		return tfo.EvalWithMetadb(this.metadb);
+			return playback.FormatTitle(tfo);
+		else
+			return this.metadb.FormatTitle(tfo);
 	}
 
 // callbacks begin

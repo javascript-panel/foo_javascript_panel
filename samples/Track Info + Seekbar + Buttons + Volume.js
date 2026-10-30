@@ -143,10 +143,10 @@ function on_paint(gr) {
 			DrawImage(gr, img, 0, 0, panel.h, panel.h, fit.crop_top);
 		}
 
-		gr.WriteText(tfo.title.Eval(), bold_font, colours.text, panel.h + 10, 0, seekbar.x - panel.h - Scale(60), panel.h * 0.6, DWRITE_TEXT_ALIGNMENT_LEADING, DWRITE_PARAGRAPH_ALIGNMENT_CENTER, DWRITE_WORD_WRAPPING_NO_WRAP, DWRITE_TRIMMING_GRANULARITY_CHARACTER);
-		gr.WriteText(tfo.artist.Eval(), normal_font, colours.text, panel.h + 10, panel.h * 0.3, seekbar.x - panel.h - Scale(60), panel.h * 0.7, DWRITE_TEXT_ALIGNMENT_LEADING, DWRITE_PARAGRAPH_ALIGNMENT_CENTER, DWRITE_WORD_WRAPPING_NO_WRAP, DWRITE_TRIMMING_GRANULARITY_CHARACTER);
-		gr.WriteText(tfo.playback_time.Eval(), normal_font, colours.text, seekbar.x - Scale(72), 0, Scale(60), Scale(28), DWRITE_TEXT_ALIGNMENT_TRAILING, DWRITE_PARAGRAPH_ALIGNMENT_CENTER);
-		gr.WriteText(tfo.length.Eval(), normal_font, colours.text, seekbar.x + seekbar.w + Scale(12), 0, Scale(60), Scale(28), DWRITE_TEXT_ALIGNMENT_LEADING, DWRITE_PARAGRAPH_ALIGNMENT_CENTER);
+		gr.WriteText(playback.FormatTitle(tfo.title), bold_font, colours.text, panel.h + 10, 0, seekbar.x - panel.h - Scale(60), panel.h * 0.6, DWRITE_TEXT_ALIGNMENT_LEADING, DWRITE_PARAGRAPH_ALIGNMENT_CENTER, DWRITE_WORD_WRAPPING_NO_WRAP, DWRITE_TRIMMING_GRANULARITY_CHARACTER);
+		gr.WriteText(playback.FormatTitle(tfo.artist), normal_font, colours.text, panel.h + 10, panel.h * 0.3, seekbar.x - panel.h - Scale(60), panel.h * 0.7, DWRITE_TEXT_ALIGNMENT_LEADING, DWRITE_PARAGRAPH_ALIGNMENT_CENTER, DWRITE_WORD_WRAPPING_NO_WRAP, DWRITE_TRIMMING_GRANULARITY_CHARACTER);
+		gr.WriteText(playback.FormatTitle(tfo.playback_time), normal_font, colours.text, seekbar.x - Scale(72), 0, Scale(60), Scale(28), DWRITE_TEXT_ALIGNMENT_TRAILING, DWRITE_PARAGRAPH_ALIGNMENT_CENTER);
+		gr.WriteText(playback.FormatTitle(tfo.length), normal_font, colours.text, seekbar.x + seekbar.w + Scale(12), 0, Scale(60), Scale(28), DWRITE_TEXT_ALIGNMENT_LEADING, DWRITE_PARAGRAPH_ALIGNMENT_CENTER);
 
 		if (playback.Length > 0) {
 			gr.FillEllipse(seekbar.x + seekbar.pos(), seekbar.y + Scale(3), Scale(6), Scale(6), colours.contrast);

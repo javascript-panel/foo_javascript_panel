@@ -30,7 +30,7 @@ function oItem(row_index, type, metadb, track_index, group_index, track_index_in
 
 	if (this.type == 1 && this.metadb) {
 		var tfo = get_tfo(p.list.groupby[cGroup.pattern_idx].l1 + "^^" + p.list.groupby[cGroup.pattern_idx].r1 + "^^" + p.list.groupby[cGroup.pattern_idx].l2 + "^^" + p.list.groupby[cGroup.pattern_idx].r2);
-		var arr = tfo.EvalWithMetadb(this.metadb).split("^^");
+		var arr = this.metadb.FormatTitle(tfo).split("^^");
 
 		this.l1 = arr[0]
 		this.r1 = arr[1];
@@ -61,8 +61,8 @@ function oItem(row_index, type, metadb, track_index, group_index, track_index_in
 
 		columns.mood_x = ww;
 
-		var tf_arr = get_tfo(g_tf_pattern).EvalPlaylistItem(g_active_playlist, this.track_index).split("^^");
-		var tf2_arr = get_tfo(g_tf2_pattern).EvalPlaylistItem(g_active_playlist, this.track_index).split("^^");
+		var tf_arr = plman.FormatTitle(get_tfo(g_tf_pattern), g_active_playlist, this.track_index).split("^^");
+		var tf2_arr = plman.FormatTitle(get_tfo(g_tf2_pattern), g_active_playlist, this.track_index).split("^^");
 
 		for (var j = 0; j < p.headerBar.columns.length; j++) {
 			if (p.headerBar.columns[j].w > 0) {
@@ -112,7 +112,7 @@ function oItem(row_index, type, metadb, track_index, group_index, track_index_in
 					}
 
 					if (foo_lastfm_playcount_sync) {
-						this.mood = get_tfo("$if2(%lfm_loved%,0)").EvalPlaylistItem(g_active_playlist, this.track_index);
+						this.mood = plman.FormatTitle(get_tfo("$if2(%lfm_loved%,0)"), g_active_playlist, this.track_index);
 					} else {
 						this.mood = tf_arr[j];
 					}
@@ -334,7 +334,7 @@ function oItem(row_index, type, metadb, track_index, group_index, track_index_in
 
 				if (mood_hover) {
 					if (foo_lastfm_playcount_sync) {
-						var loved = get_tfo("$if2(%lfm_loved%,0)").EvalWithMetadb(this.metadb);
+						var loved = this.metadb.FormatTitle(get_tfo("$if2(%lfm_loved%,0)"));
 						handles.RunContextCommand("Last.fm Playcount Sync/" + (loved == 1 ? "Unlove" : "Love"));
 					} else if (can_tag) {
 						if (typeof this.mood == "undefined" || this.mood == 0) {
@@ -525,7 +525,7 @@ function oList(object_name) {
 		var group_keys = [];
 		if (properties.showgroupheaders) {
 			this.updateGroupByPattern(cGroup.pattern_idx);
-			group_keys = tf_group_key.EvalWithMetadbs(this.handleList);
+			group_keys = this.handleList.FormatTitles(tf_group_key);
 		}
 
 		for (var i = 0; i < this.count; i++) {

@@ -277,7 +277,7 @@ function oBrowser() {
 				}
 			} else {
 				var g = 0;
-				var track_tfs = obj.group_tfo.EvalWithMetadbs(this.list);
+				var track_tfs = this.list.FormatTitles(obj.group_tfo);
 				var previous = "";
 				var handles = fb.CreateHandleList();
 
@@ -701,7 +701,7 @@ function oBrowser() {
 		case 2:
 			var name = "";
 			if (this.selected_indexes.length == 1 && !(ppt.showAllItem && this.selected_indexes[0] == 0)) {
-				name = group_objects[ppt.tagMode].playlist_tfo.EvalWithMetadb(this.selected_handles.GetItem(0));
+				name = this.selected_handles.GetItem(0).FormatTitle(group_objects[ppt.tagMode].playlist_tfo);
 			}
 			var p = plman.CreatePlaylist(plman.PlaylistCount, name);
 			plman.ActivePlaylist = p

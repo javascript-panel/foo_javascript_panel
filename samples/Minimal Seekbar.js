@@ -48,8 +48,8 @@ function on_paint(gr) {
 
 	if (playback.IsPlaying) {
 		const time_width = seekbar.x - Scale(12);
-		gr.WriteText(tfo.playback_time.Eval(), font, is_dark ? colours.light : colours.dark, 0, 0, time_width, window.Height - 3, 1, 2);
-		gr.WriteText(tfo.length.Eval(), font, is_dark ? colours.light : colours.dark, seekbar.x + seekbar.w + Scale(12), 0, time_width, window.Height - 3, 0, 2);
+		gr.WriteText(playback.FormatTitle(tfo.playback_time), font, is_dark ? colours.light : colours.dark, 0, 0, time_width, window.Height - 3, 1, 2);
+		gr.WriteText(playback.FormatTitle(tfo.length), font, is_dark ? colours.light : colours.dark, seekbar.x + seekbar.w + Scale(12), 0, time_width, window.Height - 3, 0, 2);
 
 		if (playback.Length > 0) {
 			gr.FillEllipse(seekbar.x + seekbar.pos(), seekbar.y + Scale(3), Scale(6), Scale(6), colours.slider_contrast);

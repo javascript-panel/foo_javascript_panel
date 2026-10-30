@@ -65,16 +65,16 @@ class TextDisplay {
 			let loc = plman.GetPlayingItemLocation();
 
 			if (loc.IsValid) {
-				tmp = tfo.EvalPlaylistItem(loc.PlaylistIndex, loc.PlaylistItemIndex);
+				tmp = plman.FormatTitle(tfo, loc.PlaylistIndex, loc.PlaylistItemIndex);
 			} else {
-				tmp = tfo.Eval();
+				tmp = playback.FormatTitle(tfo);
 			}
 		} else {
 			const PlaylistIndex = plman.ActivePlaylist;
 			const PlaylistItemIndex = plman.GetPlaylistFocusItemIndex(PlaylistIndex);
 
 			if (PlaylistItemIndex > -1) {
-				tmp = tfo.EvalPlaylistItem(PlaylistIndex, PlaylistItemIndex);
+				tmp = plman.FormatTitle(tfo, PlaylistIndex, PlaylistItemIndex);
 			}
 		}
 
