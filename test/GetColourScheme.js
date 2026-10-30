@@ -4,26 +4,14 @@ include('helpers');
 
 // Tracks playlist selection
 
-let img = null;
+let img;
 let colours = [];
 on_item_focus_change();
 
 function on_item_focus_change() {
-	if (img) {
-		img = null;
-	}
-
-	colours = [];
 	const metadb = fb.GetFocusItem();
-
-	if (metadb) {
-		img = metadb.GetAlbumArt(); // omitting the type defaults to front
-
-		if (img) {
-			colours = img.GetColourScheme();
-		}
-	}
-
+	img = metadb?.GetAlbumArt();
+	colours = img?.GetColourScheme() || [];
 	window.Repaint();
 }
 
