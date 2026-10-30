@@ -145,10 +145,8 @@ const CreateFontString = (name, size, bold) => {
 
 const GetNowPlayingColours = () => {
 	const metadb = playback.GetNowPlaying();
-	if (!metadb)
-		return [];
+	const img = metadb?.GetAlbumArt(AlbumArtId.front, false); // 2nd arg is want_stub - we don't
 
-	const img = metadb.GetAlbumArt(AlbumArtId.front, false); // 2nd arg is want_stub - we don't
 	if (!img)
 		return [];
 
