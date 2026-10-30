@@ -26,7 +26,7 @@ class Panel {
 			this.selection = new Property('2K3.PANEL.SELECTION', 0);
 		}
 
-		if (typeof options == 'object' && options.custom_background === true) {
+		if (options?.custom_background === true) {
 			this.custom_background = true;
 			this.colours.mode = new Property('2K3.PANEL.COLOURS.MODE', 0);
 			this.colours.custom_background = new Property('2K3.PANEL.COLOURS.CUSTOM.BACKGROUND', RGB(0, 0, 0));
@@ -145,12 +145,10 @@ class Panel {
 
 		// panel 1-999
 		// object 1000+
-		if (object) {
-			object.rbtn_up(x, y);
-		}
+		object?.rbtn_up(x, y);
 
 		if (this.list_objects.length || this.text_objects.length || this.display_objects.length) {
-			_.forEach(this.fonts.sizes, item => {
+			this.fonts.sizes.forEach(item => {
 				this.s1.AppendMenuItem(MF_STRING, item, item);
 			});
 
