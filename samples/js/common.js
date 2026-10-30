@@ -286,13 +286,13 @@ const JsonParse = value => {
 }
 
 const Menu = (x, y, flags = 0) => {
-	let menu = window.CreatePopupMenu();
-	let file = new MainMenuHelper('File', 10000, menu);
-	let edit = new MainMenuHelper('Edit', 20000, menu);
-	let view = new MainMenuHelper('View', 30000, menu);
-	let playback = new MainMenuHelper('Playback', 40000, menu);
-	let library = new MainMenuHelper('Library', 50000, menu);
-	let help = new MainMenuHelper('Help', 60000, menu);
+	const menu = window.CreatePopupMenu();
+	const file_menu = new MainMenuHelper('File', 10000, menu);
+	const edit_menu = new MainMenuHelper('Edit', 20000, menu);
+	const view_menu = new MainMenuHelper('View', 30000, menu);
+	const playback_menu = new MainMenuHelper('Playback', 40000, menu);
+	const library_menu = new MainMenuHelper('Library', 50000, menu);
+	const help_menu = new MainMenuHelper('Help', 60000, menu);
 
 	const idx = menu.TrackPopupMenu(x, y, flags);
 
@@ -300,22 +300,22 @@ const Menu = (x, y, flags = 0) => {
 	case idx == 0:
 		break;
 	case idx < 20000:
-		file.mm.ExecuteByID(idx - 10000);
+		file_menu.mm.ExecuteByID(idx - 10000);
 		break;
 	case idx < 30000:
-		edit.mm.ExecuteByID(idx - 20000);
+		edit_menu.mm.ExecuteByID(idx - 20000);
 		break;
 	case idx < 40000:
-		view.mm.ExecuteByID(idx - 30000);
+		view_menu.mm.ExecuteByID(idx - 30000);
 		break;
 	case idx < 50000:
-		playback.mm.ExecuteByID(idx - 40000);
+		playback_menu.mm.ExecuteByID(idx - 40000);
 		break;
 	case idx < 60000:
-		library.mm.ExecuteByID(idx - 50000);
+		library_menu.mm.ExecuteByID(idx - 50000);
 		break;
 	case idx < 70000:
-		help.mm.ExecuteByID(idx - 60000);
+		help_menu.mm.ExecuteByID(idx - 60000);
 		break;
 	}
 }
