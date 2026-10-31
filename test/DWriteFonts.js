@@ -27,13 +27,10 @@ list.paint = function (gr) {
 }
 
 list.update = function () {
-	this.data = [];
-	let fonts = utils.ListFonts();
-
-	_.forEach(fonts, (name) => {
-		this.data.push({
-			name : name
-		});
+	this.data = utils.ListFonts().map(font => {
+		return  {
+			name : font
+		};
 	});
 
 	this.count = this.data.length;

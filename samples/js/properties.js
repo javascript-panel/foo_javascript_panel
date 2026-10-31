@@ -86,7 +86,7 @@ class Properties {
 	add_other_info () {
 		let tmp = JSON.parse(fb.CreateHandleList(panel.metadb).GetOtherInfo());
 
-		_.forEach(['Location', 'General'], item => {
+		['Location', 'General'].forEach(item => {
 			this.add_section(tmp[item], item);
 		});
 
@@ -360,7 +360,7 @@ class Properties {
 
 		this.data.pop();
 
-		_.forEach(this.data, item => {
+		this.data.forEach(item => {
 			item.Width = item.Value.calc_width(panel.fonts.normal);
 			if (item.Value != 'SECTION_HEADER') {
 				this.properties_value_x = Math.max(this.properties_value_x, item.Name.calc_width(panel.fonts.normal) + 20);

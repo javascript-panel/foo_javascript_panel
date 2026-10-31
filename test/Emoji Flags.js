@@ -6,9 +6,7 @@ include('list_base');
 const panel = new Panel();
 const list = new ListBase(LM, TM, 0, 0);
 const flag_font = CreateFontString("Noto Color Emoji", 12);
-const json = _(JsonParseFile("Z:\\Git\\javascript-panel\\src\\Resource\\countries.json"))
-	.sortBy("name")
-	.value();
+const json_file = "Z:\\Git\\javascript-panel\\src\\Resource\\countries.json";
 
 list.paint = function (gr) {
 	for (let i = 0; i < Math.min(this.count, this.rows); i++) {
@@ -29,14 +27,15 @@ list.paint = function (gr) {
 }
 
 list.update = function () {
-	this.data = [];
-
-	_.forEach(json, (item, i) => {
-		this.data.push({
-			flag : item.flag,
-			name : item.name
-		});
-	});
+	this.data = _(JsonParseFile(json_file))
+		.sortBy("name")
+		.map(item => {
+			return {
+				flag : item.flag,
+				name : item.name
+			};
+		})
+		.value();
 
 	this.count = this.data.length;
 }

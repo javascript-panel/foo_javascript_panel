@@ -298,8 +298,8 @@ class MusicBrainz {
 						.nest(['primary', 'secondary'])
 						.value();
 
-					_.forEach(['Album', 'Single', 'EP', 'Other', 'Broadcast', 'null'], primary => {
-						_.forEach(['null', 'Audiobook', 'Compilation', 'Demo', 'DJ-mix', 'Interview', 'Live', 'Mixtape/Street', 'Remix', 'Spokenword', 'Soundtrack'], secondary => {
+					['Album', 'Single', 'EP', 'Other', 'Broadcast', 'null'].forEach(primary => {
+						['null', 'Audiobook', 'Compilation', 'Demo', 'DJ-mix', 'Interview', 'Live', 'Mixtape/Street', 'Remix', 'Spokenword', 'Soundtrack'].forEach(secondary => {
 							let group = _.get(data, primary + '.' + secondary);
 
 							if (group) {

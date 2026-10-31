@@ -58,13 +58,13 @@ class LastFm {
 		if (name == '2K3.NOTIFY.LASTFM') {
 			this.read_file();
 
-			_.forEach(panel.list_objects, item => {
+			panel.list_objects.forEach(item => {
 				if (item.name == 'lastfm_info') {
 					item.reset();
 				}
 			});
 
-			_.forEach(panel.text_objects, item => {
+			panel.text_objects.forEach(item => {
 				if (item.name == 'lastfm_bio') {
 					item.reset();
 					item.refresh();

@@ -117,7 +117,7 @@ class Thumbs {
 
 		let temp_gr = this.img.GetGraphics();
 
-		_.forEach(this.thumbs, (item, i) => {
+		this.thumbs.forEach((item, i) => {
 			if (vertical)
 				y = i * size;
 			else
@@ -158,10 +158,8 @@ class Thumbs {
 	}
 
 	create_thumbs () {
-		this.thumbs = [];
-
-		_.forEach(this.images, image => {
-			this.thumbs.push(this.create_thumb(image));
+		this.thumbs = this.images.map(image => {
+			return this.create_thumb(image);
 		});
 	}
 
@@ -204,7 +202,7 @@ class Thumbs {
 	get_files () {
 		let files = [];
 
-		if (this.properties.source.value == 0 && _.includes(this.properties.tf.value, CRLF)) {
+		if (this.properties.source.value == 0 && this.properties.tf.value.includes(CRLF)) {
 			let folders = StringToArray(this.properties.tf.value, CRLF).map(item => {
 				return panel.tf(item);
 			});
@@ -762,7 +760,7 @@ class Thumbs {
 	update () {
 		this.reset();
 
-		_.forEach(this.get_files(), item => {
+		this.get_files().forEach(item => {
 			let image = utils.LoadImage(item, this.properties.max_size.value);
 
 			if (image) {

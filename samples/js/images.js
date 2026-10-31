@@ -374,7 +374,7 @@ class Images {
 		this.image_index = 0;
 		this.image_paths = [];
 
-		if (this.properties.source.value == 0 && _.includes(this.properties.tf.value, CRLF)) {
+		if (this.properties.source.value == 0 && this.properties.tf.value.includes(CRLF)) {
 			const folders = StringToArray(this.properties.tf.value, CRLF).map(item => {
 				return panel.tf(item);
 			});

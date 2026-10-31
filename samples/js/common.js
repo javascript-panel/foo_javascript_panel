@@ -245,7 +245,7 @@ const GetFiles = (folder, exts) => {
 const Help = (x, y, flags = 0) => {
 	let menu = window.CreatePopupMenu();
 
-	_.forEach(HaLinks, (item, i) => {
+	HaLinks.forEach((item, i) => {
 		menu.AppendMenuItem(MF_STRING, i + 100, item[0]);
 
 		if (i == 1) {
