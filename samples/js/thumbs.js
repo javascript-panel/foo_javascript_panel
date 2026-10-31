@@ -158,9 +158,7 @@ class Thumbs {
 	}
 
 	create_thumbs () {
-		this.thumbs = this.images.map(image => {
-			return this.create_thumb(image);
-		});
+		this.thumbs = this.images.map(image => this.create_thumb(image));
 	}
 
 	download () {
@@ -203,9 +201,7 @@ class Thumbs {
 		let files = [];
 
 		if (this.properties.source.value == 0 && this.properties.tf.value.includes(CRLF)) {
-			let folders = StringToArray(this.properties.tf.value, CRLF).map(item => {
-				return panel.tf(item);
-			});
+			const folders = StringToArray(this.properties.tf.value, CRLF).map(item => panel.tf(item));
 
 			files = GetFiles(folders, this.exts);
 		} else {
