@@ -26,7 +26,7 @@ list.paint = function (gr) {
 	this.down_btn.paint(gr, panel.colours.text);
 }
 
-list.update = function () {
+list.refresh = function () {
 	this.data = utils.ListFonts().map(font => {
 		return  {
 			name : font
@@ -36,7 +36,7 @@ list.update = function () {
 	this.count = this.data.length;
 }
 
-list.update();
+list.refresh();
 
 function on_colours_changed() {
 	panel.colours_changed();
@@ -44,7 +44,7 @@ function on_colours_changed() {
 }
 
 function on_font_changed() {
-	list.update();
+	list.refresh();
 	panel.font_changed();
 	window.Repaint();
 }
@@ -74,8 +74,7 @@ function on_paint(gr) {
 
 function on_size() {
 	panel.size();
-	list.w = panel.w - (TM * 2);
+	list.w = panel.w - (LM * 2);
 	list.h = panel.h - TM;
 	list.size();
-	list.column_width = list.w / 2;
 }

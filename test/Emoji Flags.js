@@ -26,7 +26,7 @@ list.paint = function (gr) {
 	this.down_btn.paint(gr, panel.colours.text);
 }
 
-list.update = function () {
+list.refresh = function () {
 	this.data = _(JsonParseFile(json_file))
 		.sortBy("name")
 		.map(item => {
@@ -40,7 +40,7 @@ list.update = function () {
 	this.count = this.data.length;
 }
 
-list.update();
+list.refresh();
 
 function on_colours_changed() {
 	panel.colours_changed();
@@ -48,7 +48,7 @@ function on_colours_changed() {
 }
 
 function on_font_changed() {
-	list.update();
+	list.refresh();
 	panel.font_changed();
 	window.Repaint();
 }

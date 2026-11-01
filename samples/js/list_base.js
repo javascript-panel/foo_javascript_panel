@@ -3,6 +3,7 @@
 class ListBase {
 	constructor (x, y, w, h) {
 		panel.list_objects.push(this);
+
 		this.x = x;
 		this.y = y;
 		this.w = w;
@@ -24,7 +25,7 @@ class ListBase {
 
 	font_changed () {
 		this.size();
-		this.update();
+		this.refresh();
 	}
 
 	key_down (k) {

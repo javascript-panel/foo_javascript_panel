@@ -1,20 +1,11 @@
 'use strict';
+include ('list_base');
 
-class Properties {
+class Properties extends ListBase {
 	constructor (mode, x, y, w, h) {
-		panel.list_objects.push(this);
-		this.mode = mode;
+		super(x, y, w, h);
 
-		this.x = x;
-		this.y = y;
-		this.w = w;
-		this.h = h;
-		this.mx = 0;
-		this.my = 0;
-		this.index = 0;
-		this.offset = 0;
-		this.count = 0;
-		this.data = [];
+		this.mode = mode;
 		this.clickable_text_x = 0;
 		this.filename = '';
 		this.properties_value_x = 0;
@@ -26,9 +17,6 @@ class Properties {
 				tech : new Property('2K3.PROPERTIES.TECH', true),
 			}
 		}
-
-		this.up_btn = new SimpleButton(chars.up, this.x, this.y, Scale(12), Scale(12), () => { return this.offset > 0; }, () => { this.wheel(1); });
-		this.down_btn = new SimpleButton(chars.down, this.x, this.y, Scale(12), Scale(12), () => { return this.offset < this.count - this.rows; }, () => { this.wheel(-1); });
 	}
 
 	add_location () {
@@ -144,17 +132,8 @@ class Properties {
 		this.add_separator();
 	}
 
-	containsXY (x, y) {
-		return x > this.x && x < this.x + this.w && y > this.y && y < this.y + this.h;
-	}
-
 	draw_row (gr, text, colour, x, y, w, h, text_alignment) {
 		gr.WriteTextSimple(text, panel.fonts.normal, colour, x, y, w, h, text_alignment || DWRITE_TEXT_ALIGNMENT_LEADING, DWRITE_PARAGRAPH_ALIGNMENT_CENTER, DWRITE_WORD_WRAPPING_NO_WRAP, DWRITE_TRIMMING_GRANULARITY_CHARACTER);
-	}
-
-	font_changed () {
-		this.size();
-		this.refresh();
 	}
 
 	get_musicbrainz_url (name, value) {
@@ -186,19 +165,6 @@ class Properties {
 
 	header_text () {
 		return panel.tf('%artist% - %title%');
-	}
-
-	key_down (k) {
-		switch (k) {
-		case VK_UP:
-			this.wheel(1);
-			return true;
-		case VK_DOWN:
-			this.wheel(-1);
-			return true;
-		default:
-			return false;
-		}
 	}
 
 	lbtn_up (x, y) {
@@ -327,16 +293,6 @@ class Properties {
 		}
 	}
 
-	size () {
-		this.index = 0;
-		this.offset = 0;
-		this.rows = Math.floor((this.h - Scale(24)) / panel.row_height);
-		this.up_btn.x = this.x + Math.round((this.w - Scale(12)) * 0.5);
-		this.down_btn.x = this.up_btn.x;
-		this.up_btn.y = this.y;
-		this.down_btn.y = this.y + this.h - Scale(12);
-	}
-
 	update () {
 		this.data = [];
 		this.properties_value_x = 0;
@@ -371,27 +327,5 @@ class Properties {
 		this.offset = 0;
 		this.index = 0;
 		window.Repaint();
-	}
-
-	wheel (s) {
-		if (!this.containsXY(this.mx, this.my))
-			return false;
-
-		if (this.count > this.rows) {
-			let offset = this.offset - (s * 3);
-
-			if (offset < 0) {
-				offset = 0;
-			} else if (offset + this.rows > this.count) {
-				offset = this.count - this.rows;
-			}
-
-			if (this.offset != offset) {
-				this.offset = offset;
-				window.RepaintRect(this.x, this.y, this.w, this.h);
-			}
-		}
-
-		return true;
 	}
 }
