@@ -4,6 +4,7 @@ include('helpers');
 
 // Tracks playlist selection
 
+const font = ''; // empty string defaults to Segoe UI, 16px
 let img;
 let colours = [];
 on_item_focus_change();
@@ -23,13 +24,11 @@ function on_paint(gr) {
 			gr.FillRectangle(300, i * 30, window.Width - 300, 30, colour);
 
 			/*
-			The 2nd WriteTextSimple arg is the font. Leaving it as an empty string so defaults of Segoe UI and 16px are used.
-
 			See helpers.js in the component directory for the DetermineTextColour function
 			which calculates whether to use black or white for the text colour depending on
 			the background colour.
 			*/
-			gr.WriteTextSimple('Some text', '', DetermineTextColour(colour), 300, i * 30, window.Width - 300, 30, 2, 2);
+			gr.WriteTextSimple('Some text', font, DetermineTextColour(colour), 300, i * 30, window.Width - 300, 30, 2, 2);
 		});
 	}
 }

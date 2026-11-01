@@ -2,6 +2,7 @@
 
 include('helpers');
 
+const font = ''; // empty string defaults to Segoe UI, 16px
 const default_colour = RGB(255, 0, 0);
 
 // Default colour is used on first run, otherwise colour
@@ -11,7 +12,7 @@ let colour = window.GetProperty('BASIC.COLOUR.PICKER.COLOUR', default_colour);
 function on_paint(gr) {
 	gr.Clear(colour);
 	gr.FillRectangle(0, 0, window.Width, 24, RGB(0, 0, 0));
-	gr.WriteTextSimple('Click to open ColourPicker', '', RGB(255, 255, 255), 0, 0, window.Width, 24, 2, 0);
+	gr.WriteTextSimple('Click to open ColourPicker', font, RGB(255, 255, 255), 0, 0, window.Width, 24, 2, 0);
 }
 
 function on_mouse_lbtn_up() {
