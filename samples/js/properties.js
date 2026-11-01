@@ -139,8 +139,8 @@ class Properties extends ListBase {
 	get_musicbrainz_url (name, value) {
 		switch (name) {
 		case 'MUSICBRAINZ_ARTISTID':
-		case 'MUSICBRAINZAlbumArtISTID':
 		case 'MUSICBRAINZ ARTIST ID':
+		case 'MUSICBRAINZ_ALBUMARTISTID':
 		case 'MUSICBRAINZ ALBUM ARTIST ID':
 			return 'https://musicbrainz.org/artist/' + value;
 		case 'MUSICBRAINZ_ALBUMID':
