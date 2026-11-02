@@ -365,13 +365,18 @@ class LastFmInfo extends ListBase {
 						url = data[i].url;
 					}
 
-					this.data[i] = {
+					const item = {
 						name : name,
 						width : name.calc_width(panel.fonts.normal),
 						url : url,
 						playcount : data[i].playcount,
-						rank : i > 0 && data[i].playcount == data[i - 1].playcount ? this.data[i - 1].rank : i + 1
+						rank : i + 1
 					};
+
+					if (i > 0 && data[i].playcount == data[i - 1].playcount)
+						item.rank = this.data[i - 1].rank;
+
+					this.data.push(item);
 				}
 
 				if (FileExpired(this.filename, ONE_DAY)) {
