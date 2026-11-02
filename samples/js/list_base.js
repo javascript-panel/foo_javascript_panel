@@ -25,7 +25,7 @@ class ListBase {
 
 	font_changed () {
 		this.size();
-		this.refresh();
+		this.reset();
 	}
 
 	key_down (k) {
@@ -61,6 +61,10 @@ class ListBase {
 		this.up_btn.move(x, y);
 		this.down_btn.move(x, y);
 		return true;
+	}
+
+	reset () {
+		this.refresh();
 	}
 
 	size () {
