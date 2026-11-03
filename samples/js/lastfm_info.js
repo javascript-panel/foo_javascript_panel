@@ -355,20 +355,17 @@ class LastFmInfo extends ListBase {
 				let data = _.get(JsonParseFile(this.filename), this.chart_methods[this.properties.charts_method.value].json, []);
 
 				for (let i = 0; i < data.length; i++) {
-					let name, url;
+					let name;
 
-					if (this.properties.charts_method.value == 0) {
+					if (this.properties.charts_method.value == 0)
 						name = data[i].name;
-						url = data[i].url;
-					} else {
+					else
 						name = data[i].artist.name + ' - ' + data[i].name;
-						url = data[i].url;
-					}
 
 					const item = {
 						name : name,
 						width : name.calc_width(panel.fonts.normal),
-						url : url,
+						url : data[i].url,
 						playcount : data[i].playcount,
 						rank : i + 1
 					};
