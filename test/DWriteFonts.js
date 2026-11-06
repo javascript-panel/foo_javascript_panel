@@ -6,7 +6,7 @@ include('list_base');
 
 let panel = new Panel();
 let list = new ListBase(LM, TM, 0, 0);
-list.column_width = 0;
+list.column_width = Scale(200);
 
 list.paint = function (gr) {
 	for (let i = 0; i < Math.min(this.count, this.rows); i++) {
