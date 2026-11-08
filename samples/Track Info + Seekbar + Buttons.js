@@ -54,14 +54,7 @@ buttons.update = function () {
 }
 
 function update_album_art(metadb) {
-	if (img) {
-		img = null;
-	}
-
-	if (metadb) {
-		img = metadb.GetAlbumArt();
-	}
-
+	img = metadb?.GetAlbumArt();
 	window.Repaint();
 }
 
