@@ -317,6 +317,7 @@ function get_font() {
 	g_font_group3 = smooth_font(name, 12);
 	g_font_fluent_12 = smooth_font("Segoe Fluent Icons", 12);
 	g_font_fluent_20 = smooth_font("Segoe Fluent Icons", 20);
+	g_font_emoji = smooth_font("Noto Color Emoji", 20);
 
 	g_time_width = "00:00:00".calc_width(g_font) + 20;
 	g_font_height = g_fsize + 4;
@@ -421,6 +422,7 @@ var g_font_group2;
 var g_font_group3;
 var g_font_fluent_12;
 var g_font_fluent_20;
+var g_font_emoji;
 var g_font_height;
 var g_fsize = 16;
 

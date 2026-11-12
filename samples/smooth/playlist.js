@@ -535,13 +535,13 @@ function oBrowser() {
 
 	this.get_track_tags = function (index) {
 		var track_arr = this.rows[index].track_tf.split(" ^^ ");
-		var tags = {
-			artist : track_arr[0],
-			title : track_arr[1],
-			tracknumber : track_arr[2],
-			length : track_arr[3],
+		return {
+			flag : track_arr[0],
+			artist : track_arr[1],
+			title : track_arr[2],
+			tracknumber : track_arr[3],
+			length : track_arr[4],
 		};
-		return tags;
 	}
 
 	this.init_groups = function () {
@@ -714,20 +714,21 @@ function oBrowser() {
 
 						this.nowplaying_y = ay;
 						if (playback.IsPaused) {
-							gr.WriteTextSimple(chars.pause, g_font_fluent_20, normal_text, ax + 5, ay, ah, ah, 2, 2);
+							gr.WriteTextSimple(chars.pause, g_font_fluent_20, normal_text, ax + ah, ay, ah, ah, 2, 2);
 						} else {
-							gr.WriteTextSimple(chars.play, g_font_fluent_20, g_seconds % 2 == 0 ? normal_text : setAlpha(normal_text, 128), ax + 5, ay, ah, ah, 2, 2);
+							gr.WriteTextSimple(chars.play, g_font_fluent_20, g_seconds % 2 == 0 ? normal_text : setAlpha(normal_text, 128), ax + ah, ay, ah, ah, 2, 2);
 						}
 					} else {
 						artist = tags.artist;
 						title = tags.title;
 						right_text = tags.length;
 
-						gr.WriteTextSimple(tags.tracknumber, g_font, normal_text, ax + 5, ay, ah, ah / 2, 2, 2, 1, 1);
+						gr.WriteTextSimple(tags.tracknumber, g_font, normal_text, ax + ah, ay, ah, ah / 2, 2, 2, 1, 1);
 					}
 
-					gr.WriteTextSimple(title, g_font, normal_text, ax + ah + 10, ay, aw - ah - rw - g_time_width - 10, ah / 2, 0, 2, 1, 1);
-					gr.WriteTextSimple(artist, g_font, fader_txt, ax + ah + 10, ay + (ah / 2) - 2, aw - ah - rw - g_time_width - 10, ah / 2, 0, 2, 1, 1);
+					gr.WriteText(tags.flag, g_font_emoji, normal_text, ax, ay, ah, ah, 2, 2);
+					gr.WriteTextSimple(title, g_font, normal_text, ax + (ah * 2), ay, aw - (ah * 2) - rw - g_time_width, ah / 2, 0, 2, 1, 1);
+					gr.WriteTextSimple(artist, g_font, fader_txt, ax + (ah * 2), ay + (ah / 2) - 2, aw - (ah * 2) - rw - g_time_width, ah / 2, 0, 2, 1, 1);
 					gr.WriteTextSimple(right_text, g_font, normal_text, ax, ay, aw - 5, ah / 2, 1, 2, 1, 1);
 					break;
 				}
@@ -1318,7 +1319,7 @@ else if (ppt.groupHeaderRowsNumber > 3) ppt.groupHeaderRowsNumber = 3;
 
 var tfo = {
 	artist_title : fb.TitleFormat("%artist% ^^ %title%"),
-	track : fb.TitleFormat("[%artist%] ^^ [%title%] ^^ [[%discnumber%.]%tracknumber%.] ^^ [%length%]"),
+	track : fb.TitleFormat("$country_flag($meta(country,0)) ^^ [%artist%] ^^ [%title%] ^^ [[%discnumber%.]%tracknumber%.] ^^ [%length%]"),
 	time : fb.TitleFormat("$if3(-%playback_time_remaining%,%playback_time%,)"),
 	groupkey : fb.TitleFormat(ppt.groupkey_tf),
 }
