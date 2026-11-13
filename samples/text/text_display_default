@@ -1,6 +1,12 @@
 $font(Segoe UI,24,700)
 [%title%$crlf()]
-$if(%country%,$font(Noto Color Emoji,18)$country_flag($meta(country,0))$font() ,)
+
+$if(%country%,
+$font(Noto Color Emoji,18)
+$country_flag($meta(country,0))$char(8201)
+$ifgreater($meta_num(country),1,$country_flag($meta(country,1))$char(8201),)
+,)
+
 $font(Segoe UI,18)
 [%artist%$crlf()]
 $font(Segoe UI,14)
