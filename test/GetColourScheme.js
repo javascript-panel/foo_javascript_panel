@@ -10,14 +10,13 @@ let colours = [];
 on_item_focus_change();
 
 function on_item_focus_change() {
-	const metadb = fb.GetFocusItem();
-	img = metadb?.GetAlbumArt();
+	img = fb.GetFocusItem()?.GetAlbumArt();
 	colours = img?.GetColourScheme() || [];
 	window.Repaint();
 }
 
 function on_paint(gr) {
-	if (img && colours.length) {
+	if (img) {
 		gr.DrawImage(img, 0, 0, 300, 300, 0, 0, img.Width, img.Height);
 
 		colours.forEach((colour, i) => {
