@@ -11,13 +11,14 @@ list.column_width = Scale(200);
 list.paint = function (gr) {
 	for (let i = 0; i < Math.min(this.count, this.rows); i++) {
 		const name = this.data[i + this.offset].name;
+		const font = CreateFontString(name, panel.fonts.size.value);
 		const y = this.y + Scale(12) + (i * panel.row_height);
 
 		gr.WriteTextSimple(name, panel.fonts.normal, panel.colours.text,
 			this.x, y, this.column_width - 20, panel.row_height,
 			DWRITE_TEXT_ALIGNMENT_LEADING, DWRITE_PARAGRAPH_ALIGNMENT_CENTER, DWRITE_WORD_WRAPPING_NO_WRAP, DWRITE_TRIMMING_GRANULARITY_CHARACTER);
 
-		gr.WriteTextSimple(name, CreateFontString(name, panel.fonts.size.value), panel.colours.text,
+		gr.WriteTextSimple(name, font, panel.colours.text,
 			this.x + this.column_width, y, this.column_width + 20, panel.row_height,
 			DWRITE_TEXT_ALIGNMENT_LEADING, DWRITE_PARAGRAPH_ALIGNMENT_CENTER, DWRITE_WORD_WRAPPING_NO_WRAP, DWRITE_TRIMMING_GRANULARITY_CHARACTER)
 	}
