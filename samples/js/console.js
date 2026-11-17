@@ -16,8 +16,8 @@ class Console {
 		this.my = 0;
 		this.offset = 0;
 		this.text_layout = null;
+		this.font = null;
 		this.text = '';
-		this.font_string = '';
 		this.colour_string = '';
 
 		this.properties = {
@@ -70,7 +70,7 @@ class Console {
 				this.colour_string = JSON.stringify(colours);
 			}
 
-			this.text_layout = utils.CreateTextLayout(str, this.font_string);
+			this.text_layout = utils.CreateTextLayout(str, this.font);
 		}
 
 		this.update();
