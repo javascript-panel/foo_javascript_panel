@@ -4,8 +4,8 @@ include('helpers');
 include('panel');
 
 const panel = new Panel();
-const files = utils.ListFiles(fb.ComponentPath + 'test\\charset\\', true);
-const guess = true;
+const files = utils.ListFiles(fb.ComponentPath + 'test\\charset\\');
+let guess = true;
 
 let filename = '';
 let text = '';
