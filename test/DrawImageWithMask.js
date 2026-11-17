@@ -13,6 +13,8 @@ Just draw black for where you want to keep.
 Mask images don't have to have the same width/height.
 */
 
+const very_large_font = CreateFontString('Segoe UI', 124, true);
+
 let temp_gr;
 
 const circular_mask = utils.CreateImage(512, 512);
@@ -24,7 +26,7 @@ temp_gr = null;
 const text_mask = utils.CreateImage(512, 512);
 temp_gr = text_mask.GetGraphics();
 temp_gr.DrawRectangle(0, 0, 512, 512, 10, RGB(0, 0, 0));
-temp_gr.WriteTextSimple('MASK', JSON.stringify({Size:160,Weight:900}), RGB(0, 0, 0), 0, 0, 512, 512, 2, 2);
+temp_gr.WriteTextSimple('MASK', very_large_font, RGB(0, 0, 0), 0, 0, 512, 512, 2, 2);
 text_mask.ReleaseGraphics();
 temp_gr = null;
 
