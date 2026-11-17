@@ -5,7 +5,7 @@ include('list_base');
 
 const panel = new Panel();
 const list = new ListBase(LM, TM, 0, 0);
-const flag_font = CreateFontString("Noto Color Emoji", 12);
+const flag_font = CreateFont("Noto Color Emoji", 12);
 const json_file = "Z:\\Git\\javascript-panel\\src\\Resource\\countries.json";
 
 list.paint = function (gr) {

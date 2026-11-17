@@ -24,7 +24,7 @@ const tfo = {
 };
 
 const bs = Scale(24);
-let font = CreateFontString('Segoe UI', 12);
+let font = CreateFont('Segoe UI', 12);
 let buttons = new Buttons();
 let bottom_y = 0;
 

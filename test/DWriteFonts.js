@@ -11,7 +11,7 @@ list.column_width = Scale(200);
 list.paint = function (gr) {
 	for (let i = 0; i < Math.min(this.count, this.rows); i++) {
 		const name = this.data[i + this.offset].name;
-		const font = CreateFontString(name, panel.fonts.size.value);
+		const font = CreateFont(name, panel.fonts.size.value);
 		const y = this.y + Scale(12) + (i * panel.row_height);
 
 		gr.WriteTextSimple(name, panel.fonts.normal, panel.colours.text,

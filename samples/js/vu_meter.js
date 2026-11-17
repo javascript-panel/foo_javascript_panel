@@ -14,7 +14,7 @@ let properties = {
 	rms_3db : new Property("2K3.METER.AES", false),
 };
 
-let font_t = CreateFontString("Segoe UI", 8);
+let font_t = CreateFont("Segoe UI", 8);
 let solid_colour = false;
 let rms_block_dbs = [0.3125, 0.625, 1.25, 2.5];
 let RMS_levels = [], Peak_levels = [], Peak_falldown = [];

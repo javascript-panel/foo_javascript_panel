@@ -7,7 +7,7 @@ let ww = 0;
 let wh = 0;
 let right_text = '';
 let right_text_width = 0;
-let font = CreateFontString('Segoe UI', 10);
+let font = CreateFont('Segoe UI', 10);
 let starting = false;
 let stop_reason;
 

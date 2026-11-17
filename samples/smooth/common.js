@@ -66,7 +66,7 @@ function get_images() {
 	var background = setAlpha(g_colour_text, 10);
 	var text_colour = setAlpha(g_colour_text, 150);
 
-	var image_font = JSON.stringify({"Name":"Segoe UI","Size":40,"Weight":700})
+	var image_font = {"Name":"Segoe UI","Size":40,"Weight":700};
 
 	images.noart = utils.CreateImage(cover_size, cover_size);
 	gb = images.noart.GetGraphics();
@@ -297,15 +297,15 @@ function scale(size) {
 }
 
 function smooth_font(name, size, bold) {
-	return JSON.stringify({
+	return {
 		Name : name,
 		Size : scale(size),
 		Weight : bold ? 700 : 400,
-	});
+	};
 }
 
 function get_font() {
-	var default_font = JSON.parse(window.GetUIFont(FontType.playlists));
+	var default_font = window.GetUIFont(FontType.playlists);
 	var name = default_font.Name;
 	g_fsize = default_font.Size + Math.min(ppt.extra_font_size, 10);
 

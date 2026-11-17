@@ -289,7 +289,7 @@ function update_playlist() {
 }
 
 function height(font) {
-	return JSON.parse(font).Size + scale(4)
+	return font.Size + scale(4);
 }
 
 function scale(size) {
@@ -297,15 +297,15 @@ function scale(size) {
 }
 
 function js_font(name, size, bold) {
-	return JSON.stringify({
+	return {
 		Name : name,
 		Size : scale(size),
 		Weight : bold ? 700 : 400,
-	});
+	};
 }
 
 function get_font() {
-	var default_font = JSON.parse(window.GetUIFont(FontType.playlists));
+	var default_font = window.GetUIFont(FontType.playlists);
 	var name = default_font.Name;
 	g_font_size = default_font.Size;
 
@@ -436,7 +436,7 @@ var g_font_12_bold;
 var g_font_20_bold;
 var g_font_fluent_12;
 var g_font_fluent_20;
-var g_font_fluent_40 = JSON.stringify({Name:"Segoe Fluent Icons", Size:40}); // fixed, not relative to UI font size
+var g_font_fluent_40 = {Name:"Segoe Fluent Icons", Size:40}; // fixed, not relative to UI font size
 var g_font_group1;
 var g_font_group2;
 var g_font_size;

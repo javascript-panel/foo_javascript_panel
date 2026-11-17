@@ -32,8 +32,8 @@ const bs = Scale(24);
 const pbo_chars = [chars.repeat_off, chars.repeat_all, chars.repeat_one, chars.random, chars.shuffle, chars.album, chars.folder];
 const pbo_names = playback.GetOrderNames();
 
-let normal_font = CreateFontString('Segoe UI', 12);
-let bold_font = CreateFontString('Segoe UI', 12, true);
+let normal_font = CreateFont('Segoe UI', 12);
+let bold_font = CreateFont('Segoe UI', 12, true);
 
 window.MaxHeight = Scale(150);
 

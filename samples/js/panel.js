@@ -37,13 +37,13 @@ class Panel {
 	}
 
 	create_font (size, weight) {
-		return JSON.stringify({
+		return {
 			Name : this.fonts.name,
 			Size : Scale(size),
 			Weight : weight || 400,
 			Style : 0,
 			Stretch : 5
-		});
+		};
 	}
 
 	draw_header (gr, str) {
@@ -83,13 +83,13 @@ class Panel {
 	}
 
 	font_changed () {
-		this.fonts.name = JSON.parse(window.GetUIFont(0)).Name;
+		this.fonts.name = window.GetUIFont(0).Name;
 		this.fonts.normal = this.create_font(this.fonts.size.value);
 		this.fonts.title = this.create_font(this.fonts.size.value, 700);
-		this.fonts.monospace = CreateFontString('Consolas', this.fonts.size.value);
+		this.fonts.monospace = CreateFont('Consolas', this.fonts.size.value);
 
 		if (utils.CheckFont('Noto Color Emoji')) {
-			this.fonts.noto = CreateFontString('Noto Color Emoji', this.fonts.size.value);
+			this.fonts.noto = CreateFont('Noto Color Emoji', this.fonts.size.value);
 		} else {
 			this.fonts.noto = null;
 		}

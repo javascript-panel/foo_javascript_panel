@@ -6,7 +6,7 @@ include('common');
 include('seekbar');
 
 let seekbar = new Seekbar(0, 0, 0, 0);
-let font = CreateFontString("Segoe UI", 12);
+let font = CreateFont("Segoe UI", 12);
 let is_dark = window.IsDark;
 
 const tfo = {

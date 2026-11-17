@@ -13,7 +13,7 @@ Just draw black for where you want to keep.
 Mask images don't have to have the same width/height.
 */
 
-const very_large_font = CreateFontString('Segoe UI', 124, true);
+const very_large_font = CreateFont('Segoe UI', 124, true);
 
 let temp_gr;
 

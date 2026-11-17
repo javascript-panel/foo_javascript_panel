@@ -87,8 +87,8 @@ class Console {
 	}
 
 	update_font () {
-		const name = JSON.parse(window.GetUIFont(FontType.console)).Name;
-		this.font_string = CreateFontString(name, panel.fonts.size.value);
+		const name = window.GetUIFont(FontType.console).Name;
+		this.font = CreateFont(name, panel.fonts.size.value);
 	}
 
 	header_text () {

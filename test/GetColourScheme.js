@@ -4,7 +4,7 @@ include('helpers');
 
 // Tracks playlist selection
 
-const font = ''; // empty string defaults to Segoe UI, 16px
+let font; // undefined or null defaults to Segoe UI, 16px
 let img;
 let colours = [];
 on_item_focus_change();

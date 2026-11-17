@@ -2,7 +2,7 @@
 
 include('helpers');
 
-const font = CreateFontString("Segoe UI", 24, true);
+const font = CreateFont("Segoe UI", 24, true);
 const text_to_draw = 'StackBlur Sample';
 
 const size = 400;

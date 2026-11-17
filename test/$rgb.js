@@ -1,7 +1,7 @@
 'use strict';
 include('helpers');
 
-const default_font = CreateFontString('Segoe UI', 20);
+const default_font = CreateFont('Segoe UI', 20);
 const default_colour = RGB(0, 0, 0);
 const tfo = fb.TitleFormat('$rgb(255,0,0)%artist% $rgb(0,255,0)%title%');
 let str = '';

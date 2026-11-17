@@ -2,7 +2,7 @@
 
 include('helpers');
 
-const font = ''; // empty string defaults to Segoe UI, 16px
+let font; // undefined or null defaults to Segoe UI, 16px
 const default_colour = RGB(255, 0, 0);
 
 // Default colour is used on first run, otherwise colour

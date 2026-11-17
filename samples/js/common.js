@@ -21,7 +21,7 @@ class Button {
 		this.normal = normal;
 		this.hover = hover || normal;
 		this.current = normal;
-		this.font = JSON.stringify({Name:'Segoe Fluent Icons',Size:this.h - Scale(10)});
+		this.font = {Name:'Segoe Fluent Icons',Size:this.h - Scale(10)};
 	}
 
 	paint (gr) {
@@ -104,7 +104,7 @@ class Buttons {
 
 	change_font (name) {
 		_.forEach(this.buttons, item => {
-			item.font = JSON.stringify({Name:name,Size:item.h - Scale(10)});
+			item.font = {Name:name,Size:item.h - Scale(10)};
 		});
 	}
 }
@@ -127,7 +127,7 @@ class SimpleButton {
 		this.h = h;
 		this.v = v;
 		this.fn = fn;
-		this.font = JSON.stringify({Name:'Segoe Fluent Icons',Size:h});
+		this.font = {Name:'Segoe Fluent Icons',Size:h};
 	}
 
 	paint (gr, colour) {

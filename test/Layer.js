@@ -1,7 +1,7 @@
 'use strict';
 include('helpers');
 
-const CreateFontString2 = (name, size, weight) => {
+const CreateFont2 = (name, size, weight) => {
 	return JSON.stringify({
 		Name : name,
 		Size : Math.round(size * DPI / 72),
@@ -9,8 +9,8 @@ const CreateFontString2 = (name, size, weight) => {
 	});
 }
 
-const font1 = CreateFontString2("Segoe UI", 24, 700);
-const font2 = CreateFontString2("Segoe UI", 24, 700);
+const font1 = CreateFont2("Segoe UI", 24, 700);
+const font2 = CreateFont2("Segoe UI", 24, 700);
 
 let mouse_x = 100;
 let mouse_y = 100;

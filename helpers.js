@@ -135,12 +135,12 @@ const GetMenuFlags = (enabled, checked) => {
 	return flags;
 }
 
-const CreateFontString = (name, size, bold) => {
-	return JSON.stringify({
+const CreateFont = (name, size, bold) => {
+	return {
 		Name : name,
 		Size : Math.round(size * DPI / 72),
 		Weight : bold ? DWRITE_FONT_WEIGHT_BOLD : DWRITE_FONT_WEIGHT_NORMAL
-	});
+	};
 }
 
 const GetNowPlayingColours = () => {
