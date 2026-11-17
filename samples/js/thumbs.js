@@ -1,33 +1,23 @@
 'use strict';
-include('lastfm');
+include('image_base');
 
-class Thumbs {
+class Thumbs extends ImageBase {
 	constructor () {
-		this.mx = 0;
-		this.my = 0;
-		this.images = [];
-		this.blurred_images = [];
-		this.thumbs = [];
-		this.history = new Set();
-		this.limits = [1, 3, 5, 10, 15, 20];
+		super();
+
 		this.modes = ['grid', 'left', 'right', 'top', 'bottom', 'off'];
 		this.pxs = [75, 100, 150, 200, 250, 300];
-		this.exts = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'heif', 'heic', 'avif', 'jxl'];
 		this.json_file = Paths.data + 'thumbs.json';
 		this.defaults = this.get_defaults();
 		this.default_file = '';
-		this.folder = '';
-		this.artist = '';
-		this.artists = new Map();
-		this.properties = {};
 		this.img = null;
 		this.circular_mask = null;
 		this.nc = false;
 		this.image_xywh = [];
 		this.hover_index = 0;
-		this.image_index = 0;
-		this.time = 0;
-		this.counter = 0;
+		this.images = [];
+		this.blurred_images = [];
+		this.thumbs = [];
 
 		this.properties = {
 			mode : new Property('2K3.THUMBS.MODE', 4), // 0 grid 1 left 2 right 3 top 4 bottom 5 off
@@ -67,10 +57,6 @@ class Thumbs {
 			this.update();
 		}
 	};
-
-	containsXY (x, y) {
-		return x > this.x && x < this.x + this.w && y > this.y && y < this.y + this.h;
-	}
 
 	create_grid () {
 		const size = this.properties.px.value;
@@ -161,15 +147,6 @@ class Thumbs {
 		this.thumbs = this.images.map(image => this.create_thumb(image));
 	}
 
-	download () {
-		if (!Tagged(this.artist))
-			return;
-
-		const url = 'https://www.last.fm/music/' + encodeURIComponent(this.artist) + '/+images';
-		const task_id = utils.HTTPRequestAsync(GET, url, LastFm.headers);
-		this.artists.set(task_id, this.artist);
-	}
-
 	draw_blurred_image (gr) {
 		if (!this.images[this.image_index])
 			return;
@@ -231,22 +208,6 @@ class Thumbs {
 		}
 
 		return filtered;
-	}
-
-	http_request_done (task_id, success, response_text, status, response_headers) {
-		const artist = this.artists.get(task_id);
-
-		if (!artist)
-			return; // we didn't request this id
-
-		if (!success || status != 200) {
-			console.log(N, "HTTP status:", status);
-			console.log(response_text);
-			return;
-		}
-
-		const filename_base = ArtistFolder(artist) + utils.ReplaceIllegalChars(artist) + '_';
-		lastfm.download_images(response_text, filename_base, this.properties.limit.value);
 	}
 
 	image_containsxXY (x, y) {
@@ -420,11 +381,6 @@ class Thumbs {
 			gr.DrawImage(this.img, this.x, this.y, Math.min(this.img.Width - offset_px, this.w), this.img.Height, offset_px, 0, Math.min(this.img.Width - offset_px, this.w), this.img.Height);
 			break;
 		}
-	}
-
-	playback_new_track () {
-		this.counter = 0;
-		this.refresh();
 	}
 
 	playback_time () {

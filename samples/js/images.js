@@ -1,26 +1,11 @@
 'use strict';
-include('lastfm');
+include('image_base');
 
-class Images {
-	constructor() {
-		this.x = 0;
-		this.y = 0;
-		this.w = 0;
-		this.h = 0;
-		this.mx = 0;
-		this.my = 0;
+class Images extends ImageBase {
+	constructor () {
+		super();
+
 		this.image_paths = [];
-		this.history = new Set();
-		this.limits = [1, 3, 5, 10, 15, 20];
-		this.modes = ['grid', 'left', 'right', 'top', 'bottom', 'off'];
-		this.exts = ['webp', 'jpg', 'jpeg', 'png', 'gif', 'heif', 'heic', 'avif', 'jxl'];
-		this.folder = '';
-		this.artist = '';
-		this.artists = new Map();
-		this.properties = {};
-		this.image_index = 0;
-		this.time = 0;
-		this.counter = 0;
 		this.is_bio_panel = panel.text_objects.length == 1 && panel.text_objects[0].name == 'lastfm_bio';
 
 		this.bitmap = {
@@ -70,38 +55,9 @@ class Images {
 		}
 	};
 
-	containsXY (x, y) {
-		return x > this.x && x < this.x + this.w && y > this.y && y < this.y + this.h;
-	}
-
 	draw_blurred_image (gr) {
 		gr.Clear(RGB(30, 30, 30));
 		DrawImage(gr, this.bitmap.blur, 0, 0, panel.w, panel.h, fit.crop, this.properties.blur_opacity.value);
-	}
-
-	download () {
-		if (!Tagged(this.artist))
-			return;
-
-		const url = 'https://www.last.fm/music/' + encodeURIComponent(this.artist) + '/+images';
-		const task_id = utils.HTTPRequestAsync(GET, url, LastFm.headers);
-		this.artists.set(task_id, this.artist);
-	}
-
-	http_request_done (task_id, success, response_text, status, response_headers) {
-		const artist = this.artists.get(task_id);
-
-		if (!artist)
-			return; // we didn't request this id
-
-		if (!success || status != 200) {
-			console.log(N, "HTTP status:", status);
-			console.log(response_text);
-			return;
-		}
-
-		const filename_base = ArtistFolder(artist) + utils.ReplaceIllegalChars(artist) + '_';
-		lastfm.download_images(response_text, filename_base, this.properties.limit.value);
 	}
 
 	key_down (k) {
@@ -157,11 +113,6 @@ class Images {
 				DrawImage(gr, this.bitmap.normal, this.x, this.y, this.w, this.h, this.properties.fit.value);
 			}
 		}
-	}
-
-	playback_new_track () {
-		this.counter = 0;
-		this.refresh();
 	}
 
 	playback_time () {
