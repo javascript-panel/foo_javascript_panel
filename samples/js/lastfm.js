@@ -8,7 +8,7 @@ class LastFm {
 		'Referer' : 'https://www.last.fm',
 	});
 
-	constructor() {
+	constructor () {
 		utils.CreateFolder(Paths.data);
 		this.json_file = Paths.data + 'lastfm.json';
 		this.api_key = '';
