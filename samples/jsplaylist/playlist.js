@@ -111,11 +111,7 @@ function oItem(row_index, type, metadb, track_index, group_index, track_index_in
 						break;
 					}
 
-					if (foo_lastfm_playcount_sync) {
-						this.mood = plman.FormatTitle(get_tfo("$if2(%lfm_loved%,0)"), g_active_playlist, this.track_index);
-					} else {
-						this.mood = tf_arr[j];
-					}
+					this.mood = tf_arr[j];
 
 					if (this.mood == 0)
 						gr.WriteTextSimple(chars.heart_off, g_font_fluent_20, setAlpha(mood_colour, 120), columns.mood_x, this.y, columns.mood_w, cRow.playlist_h, 2, 2);
@@ -327,25 +323,12 @@ function oItem(row_index, type, metadb, track_index, group_index, track_index_in
 			break;
 		case "lbtn_up":
 			g_drag_drop_internal = false;
-			if (this.ishover && this.metadb) {
+			if (this.ishover && this.metadb && mood_hover) {
 				var handles = fb.CreateHandleList(this.metadb);
-				var rp = this.metadb.RawPath;
-				var can_tag = rp.startsWith("file") || rp.startsWith("cdda://");
-
-				if (mood_hover) {
-					if (foo_lastfm_playcount_sync) {
-						var loved = this.metadb.FormatTitle(get_tfo("$if2(%lfm_loved%,0)"));
-						handles.RunContextCommand("Last.fm Playcount Sync/" + (loved == 1 ? "Unlove" : "Love"));
-					} else if (can_tag) {
-						if (typeof this.mood == "undefined" || this.mood == 0) {
-							var now_ts = new Date().getTime() / 1000;
-							var now_str = utils.TimestampToDateString(now_ts);
-							handles.UpdateFileInfoFromJSON(JSON.stringify({"MOOD" : now_str}));
-						} else {
-							handles.UpdateFileInfoFromJSON(JSON.stringify({"MOOD" : ""}));
-						}
-					}
-				}
+				if (this.metadb.FormatTitle(get_tfo('$if2(%2003_loved%,0)')) == 1)
+					handles.RunContextCommand('Playcount 2003/Unlove');
+				else
+					handles.RunContextCommand('Playcount 2003/Love');
 			}
 			this.drawRectSel_click = false;
 			this.drawRectSel = false;
