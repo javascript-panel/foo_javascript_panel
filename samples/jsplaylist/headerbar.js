@@ -144,7 +144,7 @@ function oHeaderBar() {
 					var ty = 0;
 					for (var lg_y = p.list.y; lg_y < p.list.y + p.list.h + segment_h; lg_y += segment_h + gap_h) {
 						ty = lg_y - segment_h + d;
-						th = segment_h;
+						var th = segment_h;
 						if (ty < p.list.y) {
 							th = th - Math.abs(p.list.y - ty);
 							ty = p.list.y;
