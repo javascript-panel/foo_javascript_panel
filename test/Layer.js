@@ -9,8 +9,8 @@ const CreateFont2 = (name, size, weight) => {
 	});
 }
 
-const font1 = CreateFont2("Segoe UI", 24, 700);
-const font2 = CreateFont2("Segoe UI", 24, 700);
+const font1 = CreateFont2('Segoe UI', 24, 700);
+const font2 = CreateFont2('Segoe UI', 24, 700);
 
 let mouse_x = 100;
 let mouse_y = 100;
@@ -52,7 +52,7 @@ function on_paint(gr) {
 	// create layer
 	gr.PushLayer(mouse_x - 100, mouse_y - 100, 200, 200);
 
-	// exact x,y,w,h values as black text but see the "layer" in effect on mouse move
+	// exact x,y,w,h values as black text but see the 'layer' in effect on mouse move
 	gr.WriteText(text, font2, colour_string, 10, 10, window.Width - 20, window.Height - 20);
 	gr.PopLayer();
 }

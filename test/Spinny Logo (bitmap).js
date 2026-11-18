@@ -3,7 +3,7 @@
 include('helpers');
 
 let ww = 0, wh = 0, angle = 0;
-const path = fb.ComponentPath + "samples\\images\\foobar2000.png";
+const path = fb.ComponentPath + 'samples\\images\\foobar2000.png';
 const bitmap = utils.LoadBitmap(path);
 
 window.SetInterval(() => {

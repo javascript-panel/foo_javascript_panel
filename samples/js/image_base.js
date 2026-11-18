@@ -40,7 +40,7 @@ class ImageBase {
 			return; // we didn't request this id
 
 		if (!success || status != 200) {
-			console.log(N, "HTTP status:", status);
+			console.log(N, 'HTTP status:', status);
 			console.log(response_text);
 			return;
 		}

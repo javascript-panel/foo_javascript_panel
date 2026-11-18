@@ -26,7 +26,7 @@ class LastFm {
 			_.forEach(obj, item => {
 				this.extract_urls(item);
 			});
-		} else if (typeof obj == 'string' && obj.startsWith("https://lastfm-img.freetls.fastly.net/i/u/avatar170s")) {
+		} else if (typeof obj == 'string' && obj.startsWith('https://lastfm-img.freetls.fastly.net/i/u/avatar170s')) {
 			const image_url = obj.replace('avatar170s/', '') + '.jpg';
 			this.image_urls.push(image_url);
 		}

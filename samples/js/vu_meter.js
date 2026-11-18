@@ -1,24 +1,24 @@
 'use strict';
 
 let properties = {
-	colour_mode : new Property("2K3.METER.COLOURS.MODE", 1), // 0 UI, 1 custom
-	bar_mode : new Property("2K3.METER.BAR.MODE", 0), // 0 rainbow, 1 solid, 2 gradient
-	custom_background : new Property("2K3.METER.BACKGROUND.COLOUR", RGB(30, 30, 30)),
-	custom_bar : new Property("2K3.METER.BAR.COLOUR", RGB(200, 200, 200)),
-	custom_bar_g1 : new Property("2K3.METER.BAR.G1.COLOUR", RGB(0, 128, 255)),
-	custom_bar_g2 : new Property("2K3.METER.BAR.G2.COLOUR", RGB(255, 50, 10)),
-	custom_peak : new Property("2K3.METER.PEAK.COLOUR"), // no default
-	custom_text : new Property("2K3.METER.TEXT.COLOUR", RGB(240, 240, 240)),
-	meter_style : new Property("2K3.METER.STYLE", 1), // 0: smooth, 1: blocks
-	rms_block_db : new Property("2K3.METER.BLOCK.DB", 0.625),
-	rms_3db : new Property("2K3.METER.AES", false),
+	colour_mode : new Property('2K3.METER.COLOURS.MODE', 1), // 0 UI, 1 custom
+	bar_mode : new Property('2K3.METER.BAR.MODE', 0), // 0 rainbow, 1 solid, 2 gradient
+	custom_background : new Property('2K3.METER.BACKGROUND.COLOUR', RGB(30, 30, 30)),
+	custom_bar : new Property('2K3.METER.BAR.COLOUR', RGB(200, 200, 200)),
+	custom_bar_g1 : new Property('2K3.METER.BAR.G1.COLOUR', RGB(0, 128, 255)),
+	custom_bar_g2 : new Property('2K3.METER.BAR.G2.COLOUR', RGB(255, 50, 10)),
+	custom_peak : new Property('2K3.METER.PEAK.COLOUR'), // no default
+	custom_text : new Property('2K3.METER.TEXT.COLOUR', RGB(240, 240, 240)),
+	meter_style : new Property('2K3.METER.STYLE', 1), // 0: smooth, 1: blocks
+	rms_block_db : new Property('2K3.METER.BLOCK.DB', 0.625),
+	rms_3db : new Property('2K3.METER.AES', false),
 };
 
-let font_t = CreateFont("Segoe UI", 8);
+let font_t = CreateFont('Segoe UI', 8);
 let solid_colour = false;
 let rms_block_dbs = [0.3125, 0.625, 1.25, 2.5];
 let RMS_levels = [], Peak_levels = [], Peak_falldown = [];
-let ChannelNames = [ "FL", "FR", "FC", "LFE", "BL", "BR", "FCL", "FCR", "BC", "SL", "SR", "TC", "TFL", "TFC", "TFR", "TBL", "TBC", "TBR" ];
+let ChannelNames = [ 'FL', 'FR', 'FC', 'LFE', 'BL', 'BR', 'FCL', 'FCR', 'BC', 'SL', 'SR', 'TC', 'TFL', 'TFC', 'TFR', 'TBL', 'TBC', 'TBR' ];
 let ww = 0, wh = 0, timer_id = 0, rms_db_offset = 0, dBrange = 0;
 let text_layouts = {};
 
@@ -202,13 +202,13 @@ function get_initial_track_info() {
 
 	let info = handle.GetFileInfo();
 
-	let idx = info.InfoFind("channels");
+	let idx = info.InfoFind('channels');
 
 	if (idx >= 0) {
 		channels.count = Number(info.InfoValue(idx));
 	}
 
-	idx = info.InfoFind("WAVEFORMATEXTENSIBLE_CHANNEL_MASK");
+	idx = info.InfoFind('WAVEFORMATEXTENSIBLE_CHANNEL_MASK');
 
 	if (idx >= 0) {
 		channels.config = Number(info.InfoValue(idx));
@@ -231,7 +231,7 @@ function channel_name(ch) {
 		}
 	}
 
-	return "Ch" + (ch + 1);
+	return 'Ch' + (ch + 1);
 }
 
 function on_colours_changed() {
@@ -462,7 +462,7 @@ function on_paint(gr) {
 		gr.FillRectangle(bar_pad_left, y, bar_width, 1, colours.text);
 
 		for (let i = minDB, j = 0; i <= maxDB; i += db_spacing, j++) {
-			let name = i + "dB";
+			let name = i + 'dB';
 			if (!text_layouts[name]) {
 				text_layouts[name] = utils.CreateTextLayout(name, font_t, 0, 2);
 			}

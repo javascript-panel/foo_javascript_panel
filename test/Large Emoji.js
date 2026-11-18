@@ -1,7 +1,7 @@
 'use strict';
 include('helpers');
 
-const text = "🤪🎵🎙💿📅";
+const text = '🤪🎵🎙💿📅';
 const font = CreateFont('Segoe UI', 128);
 
 function on_paint(gr) {

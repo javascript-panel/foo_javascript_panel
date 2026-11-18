@@ -7,10 +7,10 @@ include('seekbar');
 
 // $rgb is supported here
 const tfo = {
-	artist : fb.TitleFormat("%artist%"),
-	title : fb.TitleFormat("%title%"),
-	playback_time : fb.TitleFormat("[%playback_time%]"),
-	length : fb.TitleFormat("$if2(%length%,LIVE)"),
+	artist : fb.TitleFormat('%artist%'),
+	title : fb.TitleFormat('%title%'),
+	playback_time : fb.TitleFormat('[%playback_time%]'),
+	length : fb.TitleFormat('$if2(%length%,LIVE)'),
 };
 
 const colours = {

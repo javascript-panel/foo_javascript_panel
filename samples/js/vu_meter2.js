@@ -45,16 +45,16 @@ class VUMeter {
 		];
 
 		this.properties = {
-			colour_mode : new Property("2K3.METER2.COLOURS.MODE", 1), // 0 UI, 1 custom
-			bar_mode : new Property("2K3.METER2.BAR.MODE", 0), // 0 rainbow, 1 solid, 2 gradient
-			custom_background : new Property("2K3.METER2.BACKGROUND.COLOUR", RGB(30, 30, 30)),
-			custom_bar : new Property("2K3.METER2.BAR.COLOUR", RGB(200, 200, 200)),
-			custom_bar_g1 : new Property("2K3.METER2.BAR.G1.COLOUR", RGB(0, 128, 255)),
-			custom_bar_g2 : new Property("2K3.METER2.BAR.G2.COLOUR", RGB(255, 50, 10)),
-			custom_peak : new Property("2K3.METER2.PEAK.COLOUR"), // no default
-			custom_text : new Property("2K3.METER2.TEXT.COLOUR", RGB(240, 240, 240)),
-			meter_style : new Property("2K3.METER2.STYLE", 1), // 0: smooth, 1: blocks
-			rms_block_db : new Property("2K3.METER2.BLOCK.DB", 0.625),
+			colour_mode : new Property('2K3.METER2.COLOURS.MODE', 1), // 0 UI, 1 custom
+			bar_mode : new Property('2K3.METER2.BAR.MODE', 0), // 0 rainbow, 1 solid, 2 gradient
+			custom_background : new Property('2K3.METER2.BACKGROUND.COLOUR', RGB(30, 30, 30)),
+			custom_bar : new Property('2K3.METER2.BAR.COLOUR', RGB(200, 200, 200)),
+			custom_bar_g1 : new Property('2K3.METER2.BAR.G1.COLOUR', RGB(0, 128, 255)),
+			custom_bar_g2 : new Property('2K3.METER2.BAR.G2.COLOUR', RGB(255, 50, 10)),
+			custom_peak : new Property('2K3.METER2.PEAK.COLOUR'), // no default
+			custom_text : new Property('2K3.METER2.TEXT.COLOUR', RGB(240, 240, 240)),
+			meter_style : new Property('2K3.METER2.STYLE', 1), // 0: smooth, 1: blocks
+			rms_block_db : new Property('2K3.METER2.BLOCK.DB', 0.625),
 		};
 	}
 

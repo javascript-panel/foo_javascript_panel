@@ -3,7 +3,7 @@
 include('helpers');
 include('lodash.min');
 
-let g_text = "";
+let g_text = '';
 const g_font = window.GetUIFont(0);
 const g_colour = window.GetUIColour(0);
 update_text();
