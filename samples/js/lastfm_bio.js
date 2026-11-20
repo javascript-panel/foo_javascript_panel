@@ -194,9 +194,9 @@ class LastFmBio {
 				str = StripTags(str);
 				str = str.replace('Read more on Last.fm. User-contributed text is available under the Creative Commons By-SA License; additional terms may apply.', '');
 
-				if (FileExpired(this.filename, ONE_DAY)) {
-					this.get();
-				}
+				//if (FileExpired(this.filename, ONE_DAY)) {
+				//	this.get();
+				//}
 			} else {
 				this.get();
 			}
