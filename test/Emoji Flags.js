@@ -16,7 +16,7 @@ list.paint = function (gr) {
 		gr.WriteTextSimple(obj.flag, flag_font, panel.colours.text,
 			this.x, y, 32, panel.row_height,
 			DWRITE_TEXT_ALIGNMENT_CENTER, DWRITE_PARAGRAPH_ALIGNMENT_CENTER, DWRITE_WORD_WRAPPING_NO_WRAP, DWRITE_TRIMMING_GRANULARITY_CHARACTER);
-			
+
 		gr.WriteTextSimple(obj.name, panel.fonts.normal, panel.colours.text,
 			this.x + 32, y, this.w, panel.row_height,
 			DWRITE_TEXT_ALIGNMENT_LEADING, DWRITE_PARAGRAPH_ALIGNMENT_CENTER, DWRITE_WORD_WRAPPING_NO_WRAP, DWRITE_TRIMMING_GRANULARITY_CHARACTER)
