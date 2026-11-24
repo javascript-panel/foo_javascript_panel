@@ -230,6 +230,7 @@ class MusicBrainz extends ListBase {
 
 	update () {
 		this.data = [];
+		this.filename = '';
 		this.spacer_w = '0000'.calc_width(panel.fonts.normal);
 
 		if (IsUUID(this.mb_id)) {
