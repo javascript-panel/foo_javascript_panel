@@ -189,7 +189,7 @@ class ListenBrainz extends ListBase {
 		this.filename = '';
 
 		if (IsUUID(this.mb_id)) {
-			this.filename = ArtistFolder(this.artist) + 'listenbrainz.similiar' + this.mb_id + '.json';
+			this.filename = ArtistFolder(this.artist) + 'listenbrainz.similiar.' + this.mb_id + '.json';
 
 			if (utils.IsFile(this.filename)) {
 				this.data = JsonParseFile(this.filename).map(item => {

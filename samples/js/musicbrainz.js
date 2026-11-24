@@ -24,7 +24,7 @@ class MusicBrainz extends ListBase {
 		this.artist = '';
 		this.mb_id = '';
 		this.filename = '';
-		this.filenames = {};
+		this.filenames = new Map();
 
 		this.properties = {
 			mode : new Property('2K3.MUSICBRAINZ.MODE', 0) // 0 releases 1 links
@@ -47,7 +47,7 @@ class MusicBrainz extends ListBase {
 		}
 
 		const task_id = utils.HTTPRequestAsync(GET, url, 'foo_javascript_panel_musicbrainz');
-		this.filenames[task_id] = this.filename;
+		this.filenames.set(task_id, this.filename);
 	}
 
 	header_text () {
@@ -55,7 +55,7 @@ class MusicBrainz extends ListBase {
 	}
 
 	http_request_done (task_id, success, response_text) {
-		const f = this.filenames[task_id];
+		const f = this.filenames.get(task_id);
 
 		if (!f)
 			return;

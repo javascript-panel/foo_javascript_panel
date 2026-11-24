@@ -21,7 +21,6 @@ class LastFmBio {
 
 		this.artist = '';
 		this.filename = '';
-		this.filenames = {};
 		this.langs = ['en', 'de', 'es', 'fr', 'it', 'ja', 'pl', 'pt', 'ru', 'sv', 'tr', 'zh'];
 		this.flag = '';
 
