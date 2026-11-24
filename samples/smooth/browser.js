@@ -1,7 +1,7 @@
 'use strict';
 
 function on_char(code) {
-	if (ppt.library && ppt.showHeaderBar && brw.inputbox.edit) {
+	if (ppt.showHeaderBar && brw.inputbox.edit) {
 		brw.inputbox.on_char(code);
 	}
 }
@@ -48,27 +48,21 @@ function on_key_up(vkey) {
 }
 
 function on_library_initialised() {
-	if (ppt.library) {
-		brw.populate();
-	}
+	brw.populate();
 }
 
 function on_library_items_added() {
-	if (ppt.library) {
-		brw.populate();
-	}
+	brw.populate();
 }
 
 function on_library_items_changed(handles, fromhook) {
-	if (ppt.library && !fromhook) {
+	if (!fromhook) {
 		brw.populate();
 	}
 }
 
 function on_library_items_removed() {
-	if (ppt.library) {
-		brw.populate();
-	}
+	brw.populate();
 }
 
 function on_mouse_lbtn_dblclk(x, y, mask) {
@@ -76,7 +70,7 @@ function on_mouse_lbtn_dblclk(x, y, mask) {
 }
 
 function on_mouse_lbtn_down(x, y) {
-	if (x < brw.w && ppt.library) g_drag_drop = true;
+	if (x < brw.w) g_drag_drop = true;
 
 	brw.on_mouse("lbtn_down", x, y);
 }
@@ -121,7 +115,7 @@ function on_paint(gr) {
 
 	brw.draw(gr);
 
-	if (ppt.library && ppt.showHeaderBar) {
+	if (ppt.showHeaderBar) {
 		var size = ppt.headerBarHeight;
 
 		if (brw.inputbox.text.length > 0) {
@@ -145,53 +139,6 @@ function on_playback_stop(reason) {
 	if (reason != 2 && ppt.enableDynamicColours) {
 		on_colours_changed();
 		brw.repaint();
-	}
-}
-
-function on_playlist_items_added(playlistIndex) {
-	if (!ppt.library && playlistIndex == g_active_playlist) {
-		brw.populate();
-	}
-}
-
-function on_playlist_items_changed(playlistIndex) {
-	if (!ppt.library && playlistIndex == g_active_playlist) {
-		brw.populate();
-	}
-}
-
-function on_playlist_items_removed(playlistIndex) {
-	if (!ppt.library && playlistIndex == g_active_playlist) {
-		brw.selected_indexes = [];
-		brw.populate();
-	}
-}
-
-function on_playlist_items_reordered(playlistIndex) {
-	if (!ppt.library && playlistIndex == g_active_playlist) {
-		brw.populate();
-	}
-}
-
-function on_playlist_items_replaced(playlistIndex) {
-	if (!ppt.library && playlistIndex == g_active_playlist) {
-		brw.populate();
-	}
-}
-
-function on_playlist_switch() {
-	g_active_playlist = plman.ActivePlaylist;
-
-	if (!ppt.library) {
-		brw.populate();
-	}
-}
-
-function on_playlists_changed() {
-	g_active_playlist = plman.ActivePlaylist;
-
-	if (!ppt.library) {
-		brw.populate();
 	}
 }
 
@@ -247,20 +194,13 @@ function oBrowser() {
 
 	this.populate = function () {
 		this.groups = [];
-		this.list.RemoveAll();
-		var obj;
 
-		if (ppt.library) {
-			this.list = fb.GetLibraryItems(g_filter_text);
-			obj = group_objects[ppt.tagMode];
-			this.list.SortByFormat(obj.sort_tf, 1);
-		} else {
-			this.list = plman.GetPlaylistItems(g_active_playlist);
-			obj = group_objects[0];
-		}
+		this.list = fb.GetLibraryItems(g_filter_text);
+		var obj = group_objects[ppt.tagMode];
+		this.list.SortByFormat(obj.sort_tf, 1);
 
 		if (this.list.Count > 0) {
-			if (ppt.library && ppt.tagMode == 1) { // multi value artist
+			if (ppt.tagMode == 1) { // multi value artist
 				var arr = this.list.GroupByTag("artist");
 
 				for (var i = 0; i < arr.length; i += 2) {
@@ -494,16 +434,7 @@ function oBrowser() {
 	this.reset_selection = function () {
 		this.selected_indexes = [];
 		this.selected_handles.RemoveAll();
-
-		if (ppt.library) {
-			window.SetSelection(this.selected_handles, 6);
-		} else {
-			window.SetSelection(this.selected_handles, 1);
-
-			if (g_active_playlist > -1) {
-				plman.ClearPlaylistSelection(g_active_playlist);
-			}
-		}
+		window.SetSelection(this.selected_handles, 6);
 	}
 
 	this.on_mouse = function (event, x, y, delta) {
@@ -523,58 +454,47 @@ function oBrowser() {
 		switch (event) {
 		case "lbtn_dblclk":
 			if (active_index > -1) {
-				if (ppt.library) {
-					this.sendItemsToPlaylist(active_index);
-				} else {
-					plman.ExecutePlaylistDefaultAction(g_active_playlist, this.groups[active_index].start);
-				}
+				this.sendItemsToPlaylist(active_index);
 			}
 			break;
 		case "lbtn_down":
 			if (active_index > -1) {
-				if (ppt.library) {
-					if (shift) {
-						if (this.old_active_index == -1 || active_index == this.old_active_index) {
-							this.selected_indexes = [active_index];
-						} else {
-							var start = Math.min(active_index, this.old_active_index);
-							var end = Math.max(active_index, this.old_active_index);
-
-							this.selected_indexes = [];
-							for (var i = start; i <= end; i++) {
-								this.selected_indexes.push(i);
-							}
-						}
+				if (shift) {
+					if (this.old_active_index == -1 || active_index == this.old_active_index) {
+						this.selected_indexes = [active_index];
 					} else {
-						this.old_active_index = active_index;
+						var start = Math.min(active_index, this.old_active_index);
+						var end = Math.max(active_index, this.old_active_index);
 
-						if (ctrl) {
-							var idx = this.selected_indexes.indexOf(active_index);
-							if (idx > -1) {
-								this.selected_indexes.splice(idx, 1);
-							} else {
-								this.selected_indexes.push(active_index);
-								this.selected_indexes.sort((a, b) => { return a - b; });
-							}
-						} else {
-							if (this.selected_indexes.indexOf(active_index) == -1) {
-								this.selected_indexes = [active_index];
-							}
+						this.selected_indexes = [];
+						for (var i = start; i <= end; i++) {
+							this.selected_indexes.push(i);
 						}
 					}
-
-					this.selected_handles.RemoveAll();
-					this.selected_indexes.forEach(item => {
-						this.selected_handles.AddItems(this.groups[item].handles);
-					});
-
-					window.SetSelection(this.selected_handles, 6);
 				} else {
-					this.selected_indexes = [active_index];
-					this.selected_handles = this.groups[active_index].handles.Clone();
-					window.SetSelection(this.selected_handles, 1);
-					this.set_playlist_selection(this.groups[active_index]);
+					this.old_active_index = active_index;
+
+					if (ctrl) {
+						var idx = this.selected_indexes.indexOf(active_index);
+						if (idx > -1) {
+							this.selected_indexes.splice(idx, 1);
+						} else {
+							this.selected_indexes.push(active_index);
+							this.selected_indexes.sort((a, b) => { return a - b; });
+						}
+					} else {
+						if (this.selected_indexes.indexOf(active_index) == -1) {
+							this.selected_indexes = [active_index];
+						}
+					}
 				}
+
+				this.selected_handles.RemoveAll();
+				this.selected_indexes.forEach(item => {
+					this.selected_handles.AddItems(this.groups[item].handles);
+				});
+
+				window.SetSelection(this.selected_handles, 6);
 			} else if (!shift && !ctrl) {
 				this.reset_selection();
 			}
@@ -585,13 +505,7 @@ function oBrowser() {
 			} else if (active_index > -1) {
 				this.selected_indexes = [active_index];
 				this.selected_handles = this.groups[active_index].handles.Clone();
-
-				if (ppt.library) {
-					window.SetSelection(this.selected_handles, 6);
-				} else {
-					window.SetSelection(this.selected_handles, 1);
-					this.set_playlist_selection(this.groups[active_index]);
-				}
+				window.SetSelection(this.selected_handles, 6);
 			}
 			break;
 		case "move":
@@ -606,13 +520,7 @@ function oBrowser() {
 
 				this.selected_indexes = [active_index];
 				this.selected_handles = this.groups[active_index].handles.Clone();
-
-				if (ppt.library) {
-					window.SetSelection(this.selected_handles, 6);
-				} else {
-					window.SetSelection(this.selected_handles, 1);
-					this.set_playlist_selection(this.groups[active_index]);
-				}
+				window.SetSelection(this.selected_handles, 6);
 			} else {
 				this.reset_selection();
 			}
@@ -631,7 +539,7 @@ function oBrowser() {
 			break;
 		}
 
-		if (ppt.library && ppt.showHeaderBar && this.list) {
+		if (ppt.showHeaderBar && this.list) {
 			this.inputbox.check(event, x, y);
 
 			if (this.inputbox.text.length > 0) {
@@ -662,10 +570,7 @@ function oBrowser() {
 		var add = window.CreatePopupMenu()
 		var context = fb.CreateContextMenuManager();
 
-		if (ppt.library) {
-			menu.AppendMenuItem(EnableMenuIf(PlaylistCanAddItems(g_active_playlist)), 1, "Add to current playlist");
-		}
-
+		menu.AppendMenuItem(EnableMenuIf(PlaylistCanAddItems(g_active_playlist)), 1, "Add to current playlist");
 		menu.AppendMenuItem(MF_STRING, 2, "Add to new playlist");
 
 		for (var i = 0; i < plman.PlaylistCount; i++) {
@@ -674,17 +579,15 @@ function oBrowser() {
 		add.AppendTo(menu, MF_STRING, "Add to other playlist");
 		menu.AppendMenuSeparator();
 
-		if (ppt.library) {
-			sub.AppendMenuItem(MF_STRING, 1000, "Send to default playlist and play");
-			sub.AppendMenuItem(MF_STRING, 1001, "Send to default playlist");
-			sub.CheckMenuRadioItem(1000, 1001, ppt.sendto_playlist_play ? 1000 : 1001);
-			sub.AppendMenuSeparator();
+		sub.AppendMenuItem(MF_STRING, 1000, "Send to default playlist and play");
+		sub.AppendMenuItem(MF_STRING, 1001, "Send to default playlist");
+		sub.CheckMenuRadioItem(1000, 1001, ppt.sendto_playlist_play ? 1000 : 1001);
+		sub.AppendMenuSeparator();
 
-			sub.AppendMenuItem(MF_STRING, 1002, "Default playlist name")
-			sub.AppendTo(menu, MF_STRING, "Double click");
+		sub.AppendMenuItem(MF_STRING, 1002, "Default playlist name")
+		sub.AppendTo(menu, MF_STRING, "Double click");
 
-			menu.AppendMenuSeparator();
-		}
+		menu.AppendMenuSeparator();
 
 		context.InitContext(this.selected_handles);
 		context.BuildMenu(menu, 10000);
@@ -757,26 +660,19 @@ function oBrowser() {
 		art_popup.AppendTo(menu, MF_STRING, "Album Art");
 		menu.AppendMenuSeparator();
 
-		menu.AppendMenuItem(MF_STRING, 10, "Library");
-		menu.AppendMenuItem(MF_STRING, 11, "Playlist");
-		menu.CheckMenuRadioItem(10, 11, ppt.library ? 10 : 11);
-		menu.AppendMenuSeparator();
-
 		menu.AppendMenuItem(MF_STRING, 20, "List");
 		menu.AppendMenuItem(MF_STRING, 21, "Grid");
 		menu.CheckMenuRadioItem(20, 21, 20 + ppt.display);
 		menu.AppendMenuSeparator();
 
-		if (ppt.library) {
-			menu.AppendMenuItem(MF_STRING, 30, "Album");
-			menu.AppendMenuItem(MF_STRING, 31, "Artist");
-			menu.AppendMenuItem(MF_STRING, 32, "Album Artist");
-			menu.CheckMenuRadioItem(30, 32, 30 + ppt.tagMode);
-			menu.AppendMenuSeparator();
+		menu.AppendMenuItem(MF_STRING, 30, "Album");
+		menu.AppendMenuItem(MF_STRING, 31, "Artist");
+		menu.AppendMenuItem(MF_STRING, 32, "Album Artist");
+		menu.CheckMenuRadioItem(30, 32, 30 + ppt.tagMode);
+		menu.AppendMenuSeparator();
 
-			menu.AppendMenuItem(MF_STRING, 33, "Sort pattern...");
-			menu.AppendMenuSeparator();
-		}
+		menu.AppendMenuItem(MF_STRING, 33, "Sort pattern...");
+		menu.AppendMenuSeparator();
 
 		menu.AppendMenuItem(CheckMenuIf(ppt.showAllItem), 40, "Show all items");
 		menu.AppendMenuSeparator();
@@ -827,12 +723,6 @@ function oBrowser() {
 			utils.RemovePath(Paths.smooth_cache);
 			utils.CreateFolder(Paths.smooth_cache);
 			images.clear();
-			this.populate();
-			break;
-		case 10:
-		case 11:
-			ppt.library = idx == 10;
-			window.SetProperty("SMOOTH.LIBRARY", ppt.library);
 			this.populate();
 			break;
 		case 20:
@@ -1018,7 +908,6 @@ var album_artist_obj = new group_object(
 
 var group_objects = [album_obj, artist_obj, album_artist_obj];
 
-ppt.library = window.GetProperty("SMOOTH.LIBRARY", true); // false = active playlist
 ppt.display = window.GetProperty("SMOOTH.DISPLAY", 1); // 0 = list, 1 = grid
 ppt.sendto_playlist = window.GetProperty("SMOOTH.SENDTO.PLAYLIST", "Library selection");
 ppt.sendto_playlist_play = window.GetProperty("SMOOTH.SENDTO.PLAYLIST.PLAY", true);
