@@ -5,7 +5,7 @@ include('panel');
 include('list_base');
 
 let panel = new Panel();
-let list = new ListBase(LM, TM, 0, 0);
+let list = new ListBase();
 list.column_width = Scale(200);
 
 list.paint = function (gr) {

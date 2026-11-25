@@ -6,7 +6,7 @@ include('panel');
 include('text_reader');
 
 let panel = new Panel();
-let text_reader = new TextReader(LM, TM, 0, 0);
+let text_reader = new TextReader();
 
 refresh();
 

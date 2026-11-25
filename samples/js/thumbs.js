@@ -3,6 +3,7 @@ include('image_base');
 
 class Thumbs extends ImageBase {
 	constructor () {
+		utils.CreateFolder(Paths.artists);
 		super();
 
 		this.modes = ['grid', 'left', 'right', 'top', 'bottom', 'off'];
@@ -38,7 +39,6 @@ class Thumbs extends ImageBase {
 		this.close_btn = new SimpleButton(chars.close, 0, 0, Scale(10), Scale(10), () => { return this.properties.mode.value == 0 && this.overlay; }, () => { this.enable_overlay(false); });
 		this.create_mask();
 
-		utils.CreateFolder(Paths.artists);
 		window.SetInterval(this.interval_func, 1000);
 	}
 

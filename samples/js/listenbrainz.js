@@ -3,6 +3,7 @@ include('list_base');
 
 class ListenBrainz extends ListBase {
 	constructor (x, y, w, h) {
+		utils.CreateFolder(Paths.artists);
 		super(x, y, w, h);
 
 		this.artist = '';
@@ -11,8 +12,6 @@ class ListenBrainz extends ListBase {
 		this.filenames = new Map();
 		this.ini_file = Paths.data + 'listenbrainz.ini';
 		this.token = utils.ReadINI(this.ini_file, 'ListenBrainz', 'Token');
-
-		utils.CreateFolder(Paths.artists);
 	}
 
 	font_changed () {

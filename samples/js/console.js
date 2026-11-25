@@ -1,7 +1,7 @@
 'use strict';
 
 class Console {
-	constructor (x, y, w, h) {
+	constructor (x = LM, y = TM, w = 0, h = 0) {
 		panel.text_objects.push(this);
 
 		this.x = x;

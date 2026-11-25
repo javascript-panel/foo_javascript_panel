@@ -6,7 +6,7 @@ include('panel');
 include('properties');
 
 let panel = new Panel();
-let properties = new Properties('properties_other_info', LM, TM, 0, 0);
+let properties = new Properties('properties_other_info');
 
 refresh();
 

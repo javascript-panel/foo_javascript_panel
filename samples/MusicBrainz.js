@@ -6,7 +6,7 @@ include('panel');
 include('musicbrainz');
 
 let panel = new Panel();
-let musicbrainz = new MusicBrainz(LM, TM, 0, 0);
+let musicbrainz = new MusicBrainz();
 
 refresh();
 

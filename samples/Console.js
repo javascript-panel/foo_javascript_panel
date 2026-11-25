@@ -6,7 +6,7 @@ include('panel');
 include('console');
 
 let panel = new Panel();
-let con = new Console(LM, TM, 0, 0);
+let con = new Console();
 
 function on_colours_changed() {
 	panel.colours_changed();

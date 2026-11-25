@@ -25,8 +25,8 @@ const colours = {
 //////////////////////////////////////////////////////////////
 
 let panel = new Panel();
-let seekbar = new Seekbar(0, 0, 0, 0);
-let volume = new Volume(0, 0, 0, 0);
+let seekbar = new Seekbar();
+let volume = new Volume();
 let buttons = new Buttons();
 let img = null;
 const bs = Scale(24);

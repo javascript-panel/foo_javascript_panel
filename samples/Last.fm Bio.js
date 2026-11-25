@@ -7,7 +7,7 @@ include('lastfm_bio');
 
 let panel = new Panel();
 let lastfm = new LastFm();
-let lastfm_bio = new LastFmBio(LM, TM, 0, 0);
+let lastfm_bio = new LastFmBio();
 
 refresh();
 

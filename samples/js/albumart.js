@@ -1,7 +1,7 @@
 'use strict';
 
 class AlbumArt {
-	constructor (x, y, w, h) {
+	constructor (x = 0, y = 0, w = 0, h = 0) {
 		this.is_text_display_panel = panel.display_objects.length == 1;
 
 		this.x = x;

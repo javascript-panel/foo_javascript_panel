@@ -3,6 +3,7 @@ include('image_base');
 
 class Images extends ImageBase {
 	constructor () {
+		utils.CreateFolder(Paths.artists);
 		super();
 
 		this.image_paths = [];
@@ -32,7 +33,6 @@ class Images extends ImageBase {
 			this.properties.blur_opacity = new Property('2K3.IMAGES.BLUR.OPACITY', 0.5);
 		}
 
-		utils.CreateFolder(Paths.artists);
 		window.SetInterval(this.interval_func, 1000);
 	}
 

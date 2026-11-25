@@ -6,7 +6,7 @@ include('panel');
 include('listenbrainz');
 
 let panel = new Panel();
-let listenbrainz = new ListenBrainz(LM, TM, 0, 0);
+let listenbrainz = new ListenBrainz();
 
 refresh();
 

@@ -6,7 +6,7 @@ include('panel');
 include('seekbar');
 
 let panel = new Panel();
-let seekbar = new Seekbar(0, 0, 0, 0);
+let seekbar = new Seekbar();
 let buttons = new Buttons();
 let font = CreateFont('Segoe UI', 12);
 let is_dark = window.IsDark;

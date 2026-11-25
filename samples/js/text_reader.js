@@ -1,7 +1,7 @@
 'use strict';
 
 class TextReader {
-	constructor (x, y, w, h) {
+	constructor (x = LM, y = TM, w = 0, h = 0) {
 		panel.text_objects.push(this);
 		this.name = 'text_reader';
 

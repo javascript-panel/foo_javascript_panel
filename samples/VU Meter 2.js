@@ -6,7 +6,7 @@ include('vu_meter2');
 
 // Modified version, auto orientation, no labels
 
-let vu_meter = new VUMeter(0, 0, 0, 0);
+let vu_meter = new VUMeter();
 
 vu_meter.timer_interval = 1000 / 60; // in ms (default: 60 fps update rate)
 vu_meter.rms_window = 50 / 1000; // in seconds (default: 50 ms)

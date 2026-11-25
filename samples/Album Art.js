@@ -6,7 +6,7 @@ include('panel');
 include('albumart');
 
 let panel = new Panel({ custom_background : true });
-let albumart = new AlbumArt(0, 0, 0, 0);
+let albumart = new AlbumArt();
 
 refresh();
 

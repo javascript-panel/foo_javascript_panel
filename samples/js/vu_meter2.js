@@ -1,11 +1,11 @@
 'use strict';
 
 class VUMeter {
-	constructor (x, y, w, h) {
-		this.x = x;
-		this.y = y;
-		this.w = w;
-		this.h = h;
+	constructor () {
+		this.x = 0;
+		this.y = 0;
+		this.w = 0;
+		this.h = 0;
 
 		this.minDB = -60; // minimum dB on the meter (meter range)
 		this.maxDB = 5; // maximum dB on the meter (meter range)

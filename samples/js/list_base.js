@@ -1,7 +1,7 @@
 'use strict';
 
 class ListBase {
-	constructor (x, y, w, h) {
+	constructor (x = LM, y = TM, w = 0, h = 0) {
 		panel.list_objects.push(this);
 
 		this.x = x;

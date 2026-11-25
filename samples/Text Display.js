@@ -8,7 +8,7 @@ include('text_display');
 
 let panel = new Panel({ custom_background : true });
 let text = new TextDisplay(LM, 0, 0, 0);
-let albumart = new AlbumArt(0, 0, 0, 0);
+let albumart = new AlbumArt();
 
 refresh();
 

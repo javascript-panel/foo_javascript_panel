@@ -11,7 +11,7 @@ const white = RGB(255, 255, 255);
 
 let panel = new Panel();
 let lastfm = new LastFm();
-let lastfm_bio = new LastFmBio(0, 0, 0, 0);
+let lastfm_bio = new LastFmBio();
 let images = new Images();
 
 lastfm_bio.paint = function (gr) {

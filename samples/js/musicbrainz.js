@@ -17,7 +17,8 @@ _.mixin({
 
 class MusicBrainz extends ListBase {
 	constructor (x, y, w, h) {
-		super (x, y, w, h)
+		utils.CreateFolder(Paths.artists);
+		super(x, y, w, h);
 
 		this.clickable_text_x = 0;
 		this.spacer_w = 0;
@@ -29,8 +30,6 @@ class MusicBrainz extends ListBase {
 		this.properties = {
 			mode : new Property('2K3.MUSICBRAINZ.MODE', 0) // 0 releases 1 links
 		};
-
-		utils.CreateFolder(Paths.artists);
 	}
 
 	draw_row (gr, text, colour, x, y, w, h, text_alignment) {

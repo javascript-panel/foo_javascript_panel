@@ -4,7 +4,7 @@ include('panel');
 include('list_base');
 
 const panel = new Panel();
-const list = new ListBase(LM, TM, 0, 0);
+const list = new ListBase();
 const flag_font = CreateFont('Noto Color Emoji', 12);
 const json_file = 'Z:\\Git\\javascript-panel\\src\\Resource\\countries.json';
 

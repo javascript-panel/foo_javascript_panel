@@ -9,8 +9,8 @@ include('seekbar');
 
 let panel = new Panel();
 let text = new TextDisplay(LM, 0, 0, 0, true);
-let albumart = new AlbumArt(0, 0, 0, 0);
-let seekbar = new Seekbar(0, 0, 0, 0);
+let albumart = new AlbumArt();
+let seekbar = new Seekbar();
 
 const colours = {
 	slider_background : RGB(160, 160, 160),

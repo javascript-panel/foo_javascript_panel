@@ -2,7 +2,7 @@
 include('lastfm');
 
 class LastFmBio {
-	constructor (x, y, w, h) {
+	constructor (x = LM, y = TM, w = 0, h = 0) {
 		utils.CreateFolder(Paths.artists);
 		panel.text_objects.push(this);
 		this.name = 'lastfm_bio';
