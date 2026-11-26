@@ -537,9 +537,9 @@ function oBrowser() {
 		var track_arr = this.rows[index].track_tf.split(" ^^ ");
 		return {
 			flag : track_arr[0],
-			artist : track_arr[1],
+			tracknumber : track_arr[1],
 			title : track_arr[2],
-			tracknumber : track_arr[3],
+			artist : track_arr[3],
 			length : track_arr[4],
 		};
 	}
@@ -1319,7 +1319,7 @@ else if (ppt.groupHeaderRowsNumber > 3) ppt.groupHeaderRowsNumber = 3;
 
 var tfo = {
 	artist_title : fb.TitleFormat("%artist% ^^ %title%"),
-	track : fb.TitleFormat("$country_flag($meta(country,0)) ^^ [%artist%] ^^ [%title%] ^^ [[%discnumber%.]%tracknumber%.] ^^ [%length%]"),
+	track : fb.TitleFormat("$country_flag($meta(country,0)) ^^ [[%discnumber%.]%tracknumber%.] ^^ [%title%] ^^ [%artist%] ^^ [%length%]"),
 	time : fb.TitleFormat("$if3(-%playback_time_remaining%,%playback_time%,)"),
 	groupkey : fb.TitleFormat(ppt.groupkey_tf),
 }
