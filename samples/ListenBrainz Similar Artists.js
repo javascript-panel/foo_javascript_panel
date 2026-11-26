@@ -63,10 +63,6 @@ function on_mouse_wheel(s) {
 	listenbrainz.wheel(s);
 }
 
-function on_notify_data(name, data) {
-	lastfm.notify_data(name, data);
-}
-
 function on_paint(gr) {
 	panel.paint(gr);
 	panel.draw_header(gr, listenbrainz.header_text());
